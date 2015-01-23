@@ -12,7 +12,14 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
-  api.addFiles(['lib/meteor-analytics.js'], 'client');
+  api.addFiles([
+    'lib/server/config/browser-policy.js'
+  ], 'server');
+  api.addFiles([
+    'lib/config.js',
+    'lib/analytics.min.js',
+    'lib/meteor-analytics.js'
+  ], 'client');
 });
 
 Package.onTest(function(api) {

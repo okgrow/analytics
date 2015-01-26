@@ -14,7 +14,7 @@ In your `settings.json` file:
 {
   "public": {
     "analyticsSettings": {
-      "Google Analytics" : {"trackingId": "Your tracking ID"},
+      "Google Analytics" : {"trackingId": "Your tracking ID"}
     }
   }
 }

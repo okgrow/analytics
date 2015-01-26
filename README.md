@@ -16,6 +16,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
       // Add your analytics tracking id's here
       "Google Analytics" : {"trackingId": "Your tracking ID"},
       "Mixpanel"         : {"token": "your token"},
+      "KISSmetrics"      : {"apiKey": "your api key"},
       "UserVoice"        : {"apiKey": "your api key"},
       "Sentry"           : {"config": "your config key"},
       "Segment.io"       : {"apiKey": "your api key"}
@@ -29,13 +30,25 @@ It's important to note that service names and API key-namess provided above are 
 > Q: Where are all the platforms that Segment.io/analytics.js support?  
 A: The analytics.js open source project does support many additional platforms. The challenge is using the correct API key-name and any other required options. It's possible to inspect the analytics.js source code and find the API key-name for the service you're using. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
 
+#### Browser Policy
+
+By default, we've included the Google Analytics & Mixpanel domains in [our browser policy configuration](https://atmospherejs.com/meteor/browser-policy). Any additional services you add will need to be added to your browser policy config as well.
+
+###### example
+```
+// file: lib/browser-policy.js
+
+BrowserPolicy.content.allowOriginForAll("www.google-analytics.com");
+BrowserPolicy.content.allowOriginForAll("cdn.mxpnl.com");
+```
+
 ## Usage
 
 ### Default behaviour
 
 We've built in some default behaviour that will be there if you've got common packages installed:
 
-###### log signin/singout  
+###### log signin/signout  
 If you have the `accounts` package installed, you'll automatically track when a user logs in and logs out
 
 ###### automatic Iron Router page view tracking  

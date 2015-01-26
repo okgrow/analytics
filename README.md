@@ -52,10 +52,12 @@ analytics.track("Bought Ticket" {
 });
 ```
 
-See the analytics.js documentation of the track function for a full description and all the other functions available in this package.
+See the [analytics.js documentation of the track function](https://segment.com/docs/libraries/analytics.js/#track) for a full description and all the other functions available in this package.
 
 ### Debugging
 
 When adding your platforms and setting events to track, you'll probably want to keep debug on locally. This will log all the analytics package's activity to the console.  
 In the console:  
 `> analytics.debug()`
+
+Turn debug off with `analytics.debug(false)`

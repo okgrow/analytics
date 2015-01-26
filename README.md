@@ -1,5 +1,5 @@
-# okgrow:analytics
-Simple analytics integration for meteor using [analytics.js](https://segment.com/docs/libraries/analytics.js/) under the hood. Use one API to record and send your data to various analytics platforms.
+# Complete analytics integration for Meteor
+Use one API to record and send your data from your Meteor app to your analytics platforms using [analytics.js](https://segment.com/docs/libraries/analytics.js/) under the hood. 
 
 ### Installation
 
@@ -24,9 +24,14 @@ Add various platforms by adding each tool's configuration to your `settings.json
 }
 ```
 
-### Usage
-==========================================================================
-##### Default behaviour
+It's important to note that service names and API key-namess provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
+
+> Q: Where are all the platforms that Segment.io/analytics.js support?  
+A: The analytics.js open source project does support many additional platforms. The challenge is using the correct API key-name and any other required options. It's possible to inspect the analytics.js source code and find the API key-name for the service you're using. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
+
+## Usage
+
+### Default behaviour
 
 We've built in some default behaviour that will be there if you've got common packages installed:
 
@@ -36,7 +41,7 @@ If you have the `accounts` package installed, you'll automatically track when a 
 ###### automatic Iron Router page view tracking  
 If you have `iron:router` installed, you'll automatically log page views using the route's `getName()` function
 
-##### Event tracking
+### Event tracking
 
 Add tracking on any events simply by calling the `analytics.track()` function:
 
@@ -49,7 +54,7 @@ analytics.track("Bought Ticket" {
 
 See the analytics.js documentation of the track function for a full description and all the other functions available in this package.
 
-##### Debugging
+### Debugging
 
 When adding your platforms and setting events to track, you'll probably want to keep debug on locally. This will log all the analytics package's activity to the console.  
 In the console:  

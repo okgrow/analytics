@@ -32,7 +32,7 @@ A: The analytics.js open source project does support many additional platforms. 
 
 #### Browser Policy
 
-By default, we've included the Google Analytics & Mixpanel domains in [our browser policy configuration](https://atmospherejs.com/meteor/browser-policy). Any additional services you add will need to be added to your browser policy config as well.
+If your project uses the [Browser Policy package](https://atmospherejs.com/meteor/browser-policy), we've included the Google Analytics & Mixpanel domains in our browser policy configuration. Any additional services you add will need to be added to your browser policy config as well.
 
 ###### example
 ```
@@ -42,29 +42,21 @@ BrowserPolicy.content.allowOriginForAll("www.google-analytics.com");
 BrowserPolicy.content.allowOriginForAll("cdn.mxpnl.com");
 ```
 
+If your project doesn't use this package, then don't worry as it will not affect your usage.
+
 ## Usage
 
-### Log signin/signout default behaviour
+### Log signin/signout and page-views default behaviour
 
-If you have the `accounts` package installed, you'll automatically track when a user logs in and logs out
+If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call identify on the user and associate their Meteor.userId to their previous anonymous activities.
 
-### Page logging
+If you have the 'iron:router' package installed, this package will automatically track page-view events using your routes' names.
 
-Log page views like so: `analytics.page('page name')`
-
-###### Automatically track page-views on Iron Router
-
-```
-// in router.js
-
-Router.onAfterAction(function() {
-  analytics.page(this.route.getName());
-});
-```
+If you do not use Iron Router, manually logging page views looks like this: `analytics.page('page name')`
 
 ### Event tracking
 
-Add tracking on any events simply by calling the `analytics.track()` function:
+Add tracking on any event simply by calling the `analytics.track()` function:
 
 ```
 analytics.track("Bought Ticket" {
@@ -73,7 +65,7 @@ analytics.track("Bought Ticket" {
 });
 ```
 
-See the [analytics.js documentation of the track function](https://segment.com/docs/libraries/analytics.js/#track) for a full description and all the other functions available in this package.
+See the [analytics.js documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
 
 ### Debugging
 

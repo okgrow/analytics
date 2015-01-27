@@ -1,6 +1,6 @@
 Package.describe({
   name: 'okgrow:analytics',
-  version: '0.0.4',
+  version: '0.1.0',
   // Brief, one-line summary of the package.
   summary: 'Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for meteor',
   // URL to the Git repository containing the source code for this package.
@@ -12,11 +12,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
-  api.use(['browser-policy']);
+  api.use('browser-policy-content', 'server', {weak: true});
+  api.use('iron:router@1.0.7', 'client', {weak: true});
   api.addFiles('lib/browser-policy.js', 'server');
   api.addFiles([
     'lib/config.js',
-    'lib/analytics.min.js',
+    'vendor/analytics.min.js',
     'lib/meteor-analytics.js'
   ], 'client');
 });

@@ -44,15 +44,23 @@ BrowserPolicy.content.allowOriginForAll("cdn.mxpnl.com");
 
 ## Usage
 
-### Default behaviour
+### Log signin/signout default behaviour
 
-We've built in some default behaviour that will be there if you've got common packages installed:
-
-###### log signin/signout  
 If you have the `accounts` package installed, you'll automatically track when a user logs in and logs out
 
-###### automatic Iron Router page view tracking  
-If you have `iron:router` installed, you'll automatically log page views using the route's `getName()` function
+### Page logging
+
+Log page views like so: `analytics.page('page name')`
+
+###### Automatically track page-views on Iron Router
+
+```
+// in routes.js
+
+Router.onAfterAction(function() {
+  analytics.page(this.route.getName());
+});
+```
 
 ### Event tracking
 

@@ -55,7 +55,7 @@ Log page views like so: `analytics.page('page name')`
 ###### Automatically track page-views on Iron Router
 
 ```
-// in routes.js
+// in router.js
 
 Router.onAfterAction(function() {
   analytics.page(this.route.getName());

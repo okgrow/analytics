@@ -1,5 +1,5 @@
 # Complete analytics integration for Meteor
-Use one API to record and send your data from your Meteor app to your analytics platforms using [analytics.js](https://segment.com/docs/libraries/analytics.js/) under the hood. 
+Use one API to record and send your data from your Meteor app to your analytics platforms. 
 
 ### Installation
 
@@ -27,8 +27,8 @@ Add various platforms by adding each tool's configuration to your `settings.json
 
 It's important to note that service names and API key-namess provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
-> Q: Where are all the platforms that Segment.io/analytics.js support?  
-A: The analytics.js open source project does support many additional platforms. The challenge is using the correct API key-name and any other required options. It's possible to inspect the analytics.js source code and find the API key-name for the service you're using. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
+> Q: What other analytics platforms are supported?  
+A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
 
 #### Browser Policy
 
@@ -65,7 +65,11 @@ analytics.track("Bought Ticket" {
 });
 ```
 
-See the [analytics.js documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
+See the [analytics.js track documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
+
+#### Track visitor scrolling
+
+Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great method on tracking page-scroll percentage. 
 
 ### Debugging
 

@@ -69,7 +69,7 @@ See the [analytics.js track documentation](https://segment.com/docs/libraries/an
 
 #### Track visitor scrolling
 
-Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great method on tracking page-scroll percentage. 
+Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great way to capture how far a visitor has scrolled down a page.
 
 ### Debugging
 

@@ -2,7 +2,7 @@ Package.describe({
   name: 'okgrow:analytics',
   version: '0.1.1',
   // Brief, one-line summary of the package.
-  summary: 'Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for meteor',
+  summary: 'Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor',
   // URL to the Git repository containing the source code for this package.
   git: 'https://github.com/okgrow/analytics',
   // By default, Meteor will default to using README.md for documentation.

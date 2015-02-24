@@ -15,7 +15,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
     "analyticsSettings": {
       // Add your analytics tracking id's here
       "Google Analytics" : {"trackingId": "Your tracking ID"},
-      "Mixpanel"         : {"token": "your token"},
+      "Mixpanel"         : {"token":  "your token", "people": true},
       "KISSmetrics"      : {"apiKey": "your api key"},
       "UserVoice"        : {"apiKey": "your api key"},
       "Sentry"           : {"config": "your config key"},

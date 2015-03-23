@@ -15,6 +15,7 @@ Package.onUse(function(api) {
   api.use('browser-policy-content', 'server', {weak: true});
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.addFiles('lib/browser-policy.js', 'server');
+  api.addFiles('lib/server/publications.js', 'server');
   api.addFiles([
     'lib/config.js',
     'vendor/analytics.min.js',

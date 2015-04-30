@@ -19,7 +19,8 @@ Add various platforms by adding each tool's configuration to your `settings.json
       "KISSmetrics"      : {"apiKey": "your api key"},
       "UserVoice"        : {"apiKey": "your api key"},
       "Sentry"           : {"config": "your config key"},
-      "Segment.io"       : {"apiKey": "your api key"}
+      "Segment.io"       : {"apiKey": "your api key"},
+      "Keen IO"          : {"projectId": "your project id", "writeKey": "your write key"}
     }
   }
 }
@@ -28,7 +29,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
 It's important to note that service names and API key-namess provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
 > Q: What other analytics platforms are supported?  
-A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
+A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options, but these setting can usually be found by looking at the individual integration repos. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
 
 #### Browser Policy
 

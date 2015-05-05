@@ -67,6 +67,16 @@ analytics.track("Bought Ticket" {
 
 See the [analytics.js track documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
 
+### Compatibility with useraccounts:core (using Iron Router `ensureSignedIn` plugin)
+
+If you use the `ensureSignedIn` plugin offered by [the usearccounts:core package](https://atmospherejs.com/useraccounts/core), you need to add the [revolutionlabs:user-login-state](https://atmospherejs.com/revolutionlabs/user-login-state) for compatibility. 
+
+### Compatibility with splendido:accounts-meld
+
+The [splendido:accounts-meld package](https://atmospherejs.com/splendido/accounts-meld) adds an extra field to the users collection, called `registered_emails`. Melded accounts will skip the `emails` field and fill this one instead.
+
+This package will try to read the first address in the `emails` field, then move on to `registered_emails` before identifying the current user.
+
 #### Track visitor scrolling
 
 Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great way to capture how far a visitor has scrolled down a page.

@@ -12,6 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
+  api.use('accounts-base', ['client', 'server'], {weak: true});
   api.use('browser-policy-content', 'server', {weak: true});
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.addFiles('lib/browser-policy.js', 'server');

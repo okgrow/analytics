@@ -60,7 +60,7 @@ If you do not use Iron Router, manually logging page views looks like this: `ana
 Add tracking on any event simply by calling the `analytics.track()` function:
 
 ```
-analytics.track("Bought Ticket" {
+analytics.track("Bought Ticket", {
   eventName: "Wine Tasting",
   couponValue: 50,
 });

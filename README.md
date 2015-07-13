@@ -13,7 +13,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
 {
   "public": {
     "analyticsSettings": {
-      // Add your analytics tracking id's here
+      // Add your analytics tracking id's here (remove this line before running)
       "Google Analytics" : {"trackingId": "Your tracking ID"},
       "Mixpanel"         : {"token":  "your token", "people": true},
       "KISSmetrics"      : {"apiKey": "your api key"},

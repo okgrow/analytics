@@ -1,15 +1,57 @@
-if (Meteor.isClient){
+if (Meteor.isClient) {
+
+  var firstLevelRoutes = FlowRouter.group({
+    name: 'First Level Group',
+    prefix: '/first-level'
+  });
+
+  var secondLevelRoutes = firstLevelRoutes.group({
+    name: 'Second Level Group',
+    prefix: '/second-level'
+  });
+
+  var thirdLevelRoutes = secondLevelRoutes.group({
+    name: 'Third Level Group',
+    prefix: '/third-level'
+  });
+
+  firstLevelRoutes.route('/', {
+    name: 'First Level Route',
+    action: function(params) {
+      FlowLayout.render("mainLayout", {main: "firstLevel"});
+    }
+  });
+
+  secondLevelRoutes.route('/', {
+    name: 'Second Level Route',
+    action: function(params) {
+      FlowLayout.render("mainLayout", {main: "secondLevel"});
+    }
+  });
+
+  thirdLevelRoutes.route('/', {
+    action: function(params) {
+      FlowLayout.render("mainLayout", {main: "thirdLevel"});
+    }
+  }); // without 'name', path is used for tracking
+
   FlowRouter.route('/one', {
     action: function(params) {
       FlowLayout.render("mainLayout", {main: "one"});
     },
-    name: "SomeName" // used for track
+    name: "One" // used for track
   });
+
   FlowRouter.route('/two', {
     action: function(params) {
       FlowLayout.render("mainLayout", {main: "two"});
     },
-    name: "AnotherName" // used for track
+    name: "Two" // used for track
   });
-  FlowRouter.route('/three') // without 'name', path is used for tracking
+
+  FlowRouter.route('/three', {
+    action: function(params) {
+      FlowLayout.render("mainLayout", {main: "three"});
+    }
+  }); // without 'name', path is used for tracking
 }

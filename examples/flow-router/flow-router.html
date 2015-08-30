@@ -8,6 +8,10 @@
   <a href='/two'>Two</a>
   <a href='/three'>Three</a>
 
+  <a href='/first-level?level=1'>First Level</a>
+  <a href='/first-level/second-level?level=2&subdir=1'>Second Level</a>
+  <a href='/first-level/second-level/third-level?level=3&subdir=1'>Third Level</a>
+
 </body>
 
 <template name="mainLayout">
@@ -26,4 +30,16 @@
 
 <template name='three'>
   Hello Three
+</template>
+
+<template name='firstLevel'>
+  You are on the first level.
+</template>
+
+<template name='secondLevel'>
+  You are on the second level.
+</template>
+
+<template name='thirdLevel'>
+  You are on the third level.
 </template>

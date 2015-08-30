@@ -1,5 +1,5 @@
 # Complete analytics integration for Meteor
-Use one API to record and send your data from your Meteor app to your analytics platforms. 
+Use one API to record and send your data from your Meteor app to your analytics platforms.
 
 ### Installation
 
@@ -29,7 +29,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
 It's important to note that service names and API key-namess provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
 > Q: What other analytics platforms are supported?  
-A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options, but these setting can usually be found by looking at the individual integration repos. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
+A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options, but these setting can usually be found by looking at the individual integration repos. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example!
 
 #### Browser Policy
 
@@ -51,9 +51,9 @@ If your project doesn't use this package, then don't worry as it will not affect
 
 If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call identify on the user and associate their Meteor.userId to their previous anonymous activities.
 
-If you have the 'iron:router' package installed, this package will automatically track page-view events using your routes' names.
+If you have the 'iron:router' or 'kadira:flow-router' packages installed, this package will automatically track page-view events using your routes' names.
 
-If you do not use Iron Router, manually logging page views looks like this: `analytics.page('page name')`
+If you do not use Iron Router or Flow Router, manually logging page views looks like this: `analytics.page('page name')`
 
 ### Event tracking
 

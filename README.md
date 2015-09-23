@@ -15,6 +15,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
     "analyticsSettings": {
       // Add your analytics tracking id's here (remove this line before running)
       "Google Analytics" : {"trackingId": "Your tracking ID"},
+      "GoSquared"        : {"siteToken": "Your site token (eg. GSN-123456-Y)"},
       "Mixpanel"         : {"token":  "your token", "people": true},
       "KISSmetrics"      : {"apiKey": "your api key"},
       "UserVoice"        : {"apiKey": "your api key"},
@@ -26,7 +27,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
 }
 ```
 
-It's important to note that service names and API key-namess provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
+It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
 > Q: What other analytics platforms are supported?  
 A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options, but these setting can usually be found by looking at the individual integration repos. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 

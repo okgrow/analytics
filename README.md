@@ -1,11 +1,11 @@
 # Complete analytics integration for Meteor
-Use one API to record and send your data from your Meteor app to your analytics platforms. 
+Use one API to record and send your data from your Meteor app to your analytics platforms.
 
-### Installation
+## Installation
 
 `> meteor add okgrow:analytics`
 
-### Configuration
+## Configuration
 
 Add various platforms by adding each tool's configuration to your `settings.json` file:
 
@@ -29,32 +29,19 @@ Add various platforms by adding each tool's configuration to your `settings.json
 
 It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
-> Q: What other analytics platforms are supported?  
-A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options, but these setting can usually be found by looking at the individual integration repos. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example! 
+## Functionality
 
-#### Browser Policy
+### Page views
 
-If your project uses the [Browser Policy package](https://atmospherejs.com/meteor/browser-policy), we've included the Google Analytics & Mixpanel domains in our browser policy configuration. Any additional services you add will need to be added to your browser policy config as well.
+Compatible with either IronRouter or FlowRouter (even pre-2.0 FlowRouter),
+this package will log page views automatically.
 
-###### example
-```
-// file: lib/browser-policy.js
+To manually log a page view: `analytics.page('page name')`
 
-BrowserPolicy.content.allowOriginForAll("www.google-analytics.com");
-BrowserPolicy.content.allowOriginForAll("cdn.mxpnl.com");
-```
+### Log signin/signout
 
-If your project doesn't use this package, then don't worry as it will not affect your usage.
+If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call `identify` on the user and associate their `Meteor.userId` to their previous anonymous activities.
 
-## Usage
-
-### Log signin/signout and page-views default behaviour
-
-If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call identify on the user and associate their Meteor.userId to their previous anonymous activities.
-
-If you have the 'iron:router' package installed, this package will automatically track page-view events using your routes' names.
-
-If you do not use Iron Router, manually logging page views looks like this: `analytics.page('page name')`
 
 ### Event tracking
 
@@ -69,9 +56,28 @@ analytics.track("Bought Ticket", {
 
 See the [analytics.js track documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
 
-#### Track visitor scrolling
+### Track visitor scrolling
 
 Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great way to capture how far a visitor has scrolled down a page.
+
+### Configuration
+
+> Q: What other analytics platforms are supported?  
+A: This package uses the [analytics.js](https://segment.com/docs/libraries/analytics.js/) open source project under the hood which does support many additional platforms. The challenge is using the correct API key-name and any other required options, but these setting can usually be found by looking at the individual integration repos. If you've used other services with the open-source codebase and can confirm the API options please submit a PR to update this example!
+
+#### Browser Policy
+
+If your project uses the [Browser Policy package](https://atmospherejs.com/meteor/browser-policy), we've included the Google Analytics & Mixpanel domains in our browser policy configuration. Any additional services you add will need to be added to your browser policy config as well.
+
+###### example
+```
+// file: lib/browser-policy.js
+
+BrowserPolicy.content.allowOriginForAll("www.google-analytics.com");
+BrowserPolicy.content.allowOriginForAll("cdn.mxpnl.com");
+```
+
+If your project doesn't use this package, then don't worry as it will not affect your usage.
 
 ### Debugging
 

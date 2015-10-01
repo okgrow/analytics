@@ -7,6 +7,13 @@
 meteor-platform
 autopublish
 insecure
-meteorhacks:flow-router
+
+# flow-router 2.0+
+kadira:flow-router
+kadira:blaze-layout
+
+# flow-router < 2.0
+#meteorhacks:flow-router
+#meteorhacks:flow-layout
+
 okgrow:analytics
-meteorhacks:flow-layout

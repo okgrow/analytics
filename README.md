@@ -29,8 +29,6 @@ Add various platforms by adding each tool's configuration to your `settings.json
 
 It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
-## Functionality
-
 ### Page views
 
 Compatible with either IronRouter or FlowRouter (even pre-2.0 FlowRouter),
@@ -41,7 +39,6 @@ To manually log a page view: `analytics.page('page name')`
 ### Log signin/signout
 
 If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call `identify` on the user and associate their `Meteor.userId` to their previous anonymous activities.
-
 
 ### Event tracking
 

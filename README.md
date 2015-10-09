@@ -32,7 +32,15 @@ It's important to note that service names and API key-names provided above are s
 ### Page views
 
 Compatible with either IronRouter or FlowRouter (even pre-2.0 FlowRouter),
-this package will log page views automatically.
+this package will log page views automatically. For FlowRouter, the page is
+logged with the follow parameters:
+
+ * `path`: path part of the URL
+ * `title`: the page's title, as specified by the route
+ * `url`: hostname + path
+ * `name`: route name if set, otherwise equivalent to `path`
+ * `search`: the URL's query string, if provided. blank otherwise
+ * `referrer`: hostname + old path, if coming from a previous route
 
 To manually log a page view: `analytics.page('page name')`
 

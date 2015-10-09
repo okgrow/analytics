@@ -18,20 +18,20 @@ if (Meteor.isClient) {
   firstLevelRoutes.route('/', {
     name: 'First Level Route',
     action: function(params) {
-      FlowLayout.render("mainLayout", {main: "firstLevel"});
+      BlazeLayout.render("mainLayout", {main: "firstLevel"});
     }
   });
 
   secondLevelRoutes.route('/', {
     name: 'Second Level Route',
     action: function(params) {
-      FlowLayout.render("mainLayout", {main: "secondLevel"});
+      BlazeLayout.render("mainLayout", {main: "secondLevel"});
     }
   });
 
   thirdLevelRoutes.route('/', {
     action: function(params) {
-      FlowLayout.render("mainLayout", {main: "thirdLevel"});
+      BlazeLayout.render("mainLayout", {main: "thirdLevel"});
     }
   }); // without 'name', path is used for tracking
 
@@ -51,7 +51,7 @@ if (Meteor.isClient) {
 
   FlowRouter.route('/three', {
     action: function(params) {
-      FlowLayout.render("mainLayout", {main: "three"});
+      BlazeLayout.render("mainLayout", {main: "three"});
     }
   }); // without 'name', path is used for tracking
 }

@@ -5,7 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 iron:router
 okgrow:analytics
+accounts-password
+accounts-ui
+accounts-github
+accounts-google
+accounts-facebook

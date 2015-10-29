@@ -18,12 +18,13 @@ Package.onUse(function(api) {
   api.use('meteorhacks:flow-router@1.17.2', 'client', {weak: true});
   api.use('kadira:flow-router@2.6.0', 'client', {weak: true});
 
-  api.addFiles('lib/browser-policy.js', 'server');
-  api.addFiles('lib/server/publications.js', 'server');
   api.addFiles([
-    'lib/config.js',
+    'server/browser-policy.js',
+    'server/publications.js'
+  ], 'server');
+  api.addFiles([
     'vendor/analytics.min.js',
-    'lib/meteor-analytics.js',
-    'lib/collections.js'
+    'client/collections.js',
+    'client/meteor-analytics.js',
   ], 'client');
 });

@@ -1,3 +1,25 @@
+// analytics.js might not have loaded it's integrations by the time we start
+// tracking events, page views and identifies.
+// So we can use these *WhenReady() functions to cause the action to be
+// deferred until all the intgrations are ready.
+//
+// TODO consider whether we should export something like this, maybe provide
+// our own api instead of just using analytics.js' api
+var trackEventWhenReady = function () {
+  var _args = arguments;
+  analytics.ready(function () {analytics.track.apply(this, _args);});
+};
+
+var trackPageWhenReady = function () {
+  var _args = arguments;
+  analytics.ready(function () {analytics.page.apply(this, _args);});
+};
+
+var identifyWhenReady = function () {
+  var _args = arguments;
+  analytics.ready(function () {analytics.identify.apply(this, _args);});
+};
+
 /*
 * getUserEmail()
 * Figure out the user's correct email address. This helps the differing keys
@@ -42,23 +64,17 @@ var trackLogins = function () {
   if (initialized) {
     // when Meteor.userId() changes this will run
     if (Meteor.userId()) {
-      identify();
-      analytics.track("Signed in");
+      // TODO I think it's not guaranteed that userEmail has been set because
+      // the 'analyticsusers' publication might not be ready yet.
+      identifyWhenReady(Meteor.userId(), {email: userEmail});
+      trackEventWhenReady("Signed in");
     } else {
-      analytics.track("Signed out");
+      trackEventWhenReady("Signed out");
     }
   }
   initialized = true;
 };
 
-var identify = function () {
-  Tracker.nonreactive(function () {
-    // don't re-run when userEmail changes
-    if (userEmail) {
-      analytics.identify(Meteor.userId(), {email: userEmail});
-    }
-  });
-};
 
 var _IronRouter = (Package['iron:router'] && Package['iron:router'].Router);
 var _FlowRouter = (Package['kadira:flow-router'] && Package['kadira:flow-router'].FlowRouter) ||
@@ -69,7 +85,7 @@ var _FlowRouter = (Package['kadira:flow-router'] && Package['kadira:flow-router'
 if (_IronRouter) {
   _IronRouter.onRun(function() {
     var router = this;
-    Tracker.afterFlush(function () { analytics.page(router.route.getName()); });
+    Tracker.afterFlush(function () { trackPageWhenReady(router.route.getName()); });
     this.next();
   });
 }
@@ -95,12 +111,18 @@ if (_FlowRouter) {
       page.referrer = window.location.origin + context.oldRoute.path;
     }
 
-    analytics.page(page.name, page);
+    trackPageWhenReady(page.name, page);
   }]);
 }
 
 var userEmail;
 Meteor.startup(function () {
+  if (Meteor.settings && Meteor.settings.public && Meteor.settings.public.analyticsSettings) {
+    analytics.initialize(Meteor.settings.public.analyticsSettings);
+  } else {
+    console.log("Missing analyticsSettings in Meteor.settings.public");
+  }
+
   if (Package['accounts-base']) {
     Tracker.autorun(function () {
       userEmail = getUserEmail();

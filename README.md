@@ -51,6 +51,26 @@ logged with the follow parameters:
 
 To manually log a page view: `analytics.page('page name')`
 
+To disable a page view log enable `analyticsDisable` on the route.
+
+```
+// Disable page view log examples
+
+// Iron-Router
+Router.route('/privateRoute', function () {
+  this.render('privatePage');
+},{analyticsDisable: true});
+
+// Flow-Router
+FlowRouter.route('/privateRoute', {
+  action: function(params) {
+    BlazeLayout.render("mainLayout", {main: "privatePage"});
+  },
+  name: "Private Page",
+  analyticsDisable: true
+});
+```
+
 ### Log signin/signout
 
 If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call `identify` on the user and associate their `Meteor.userId` to their previous anonymous activities.

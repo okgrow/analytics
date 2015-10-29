@@ -46,7 +46,8 @@ if (Meteor.isClient) {
     action: function(params) {
       BlazeLayout.render("mainLayout", {main: "two"});
     },
-    name: "Two" // used for track
+    name: "Two", // used for track
+    analyticsDisable: true
   });
 
   FlowRouter.route('/three', {

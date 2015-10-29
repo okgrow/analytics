@@ -12,14 +12,35 @@
 
 </body>
 
+<template name="mainLayout">
+  <div>
+    {{> yield}}
+  </div>
+  <div>
+    <h3>Latest Analytics Logged</h3>
+    <ul>
+      <li>
+        Page: <strong>{{analyticPage}}</strong>
+      </li>
+      <li>
+        Identify: <strong>{{analyticIdentify}}</strong>
+      </li>
+      <li>
+        Track: <strong>{{analyticTrack}}</strong>
+      </li>
+    </ul>
+  </div>
+  <p>Want to see more detail? Call <code style="background-color: blueviolet; padding: 3px 6px; color: white;">analytics.debug()</code> in the browser console and refresh.</p>
+</template>
+
 <template name='one'>
-  Hello One
+  <h2>Page One</h2>
 </template>
 
 <template name='two'>
-  Hello Two
+  <h2>Page Two</h2>
 </template>
 
 <template name='three'>
-  Hello Three
+  <h2>Page Three</h2>
 </template>

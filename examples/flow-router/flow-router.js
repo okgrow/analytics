@@ -1,39 +1,11 @@
 if (Meteor.isClient) {
 
-  var firstLevelRoutes = FlowRouter.group({
-    name: 'First Level Group',
-    prefix: '/first-level'
-  });
-
-  var secondLevelRoutes = firstLevelRoutes.group({
-    name: 'Second Level Group',
-    prefix: '/second-level'
-  });
-
-  var thirdLevelRoutes = secondLevelRoutes.group({
-    name: 'Third Level Group',
-    prefix: '/third-level'
-  });
-
-  firstLevelRoutes.route('/', {
-    name: 'First Level Route',
+  FlowRouter.route('/', {
     action: function(params) {
-      BlazeLayout.render("mainLayout", {main: "firstLevel"});
-    }
+      BlazeLayout.render("mainLayout", {main: "one"});
+    },
+    name: "Home" // used for track
   });
-
-  secondLevelRoutes.route('/', {
-    name: 'Second Level Route',
-    action: function(params) {
-      BlazeLayout.render("mainLayout", {main: "secondLevel"});
-    }
-  });
-
-  thirdLevelRoutes.route('/', {
-    action: function(params) {
-      BlazeLayout.render("mainLayout", {main: "thirdLevel"});
-    }
-  }); // without 'name', path is used for tracking
 
   FlowRouter.route('/one', {
     action: function(params) {
@@ -54,4 +26,32 @@ if (Meteor.isClient) {
       BlazeLayout.render("mainLayout", {main: "three"});
     }
   }); // without 'name', path is used for tracking
+
+
+
+  Template.mainLayout.onCreated(function () {
+    var self = this;
+    var currentIdentity = analytics._user._getTraits().email || 'No Identity Set';
+    self.analyticPage = new ReactiveVar('No Page Set');
+    self.analyticIdentify = new ReactiveVar(currentIdentity);
+    self.analyticTrack = new ReactiveVar('No Track Called');
+    self.autorun(function () {
+      analytics.on('page', function(event, properties, options){
+        self.analyticPage.set(options.path)
+      });
+      analytics.on('identify', function(event, properties, options){
+        self.analyticIdentify.set(properties.email)
+      });
+      analytics.on('track', function(event, properties, options){
+        self.analyticTrack.set(event)
+      });
+    });
+  });
+
+  Template.mainLayout.helpers({
+    analyticPage:     function() { return Template.instance().analyticPage.get() },
+    analyticIdentify: function() { return Template.instance().analyticIdentify.get() },
+    analyticTrack:    function() { return Template.instance().analyticTrack.get() }
+  });
+
 }

@@ -31,27 +31,30 @@ if (Meteor.isClient) {
 
   Template.mainLayout.onCreated(function () {
     var self = this;
-    var currentIdentity = analytics._user._getTraits().email || 'No Identity Set';
-    self.analyticPage = new ReactiveVar('No Page Set');
-    self.analyticIdentify = new ReactiveVar(currentIdentity);
-    self.analyticTrack = new ReactiveVar('No Track Called');
-    self.autorun(function () {
-      analytics.on('page', function(event, properties, options){
-        self.analyticPage.set(options.path)
-      });
-      analytics.on('identify', function(event, properties, options){
-        self.analyticIdentify.set(properties.email)
-      });
-      analytics.on('track', function(event, properties, options){
-        self.analyticTrack.set(event)
-      });
+    self.currentIdentity = new ReactiveVar(analytics._user._getTraits().email || 'No Identity Set');
+    self.log = new ReactiveVar([]);
+    analytics.on('page', function(event, properties, options){
+      var latest = self.log.get();
+      latest.push("Page: " + options.path);
+      self.log.set(latest);
+    });
+    analytics.on('identify', function(event, properties, options){
+      var latest = self.log.get();
+      latest.push("Identify: " + properties.email);
+      self.log.set(latest);
+      self.currentIdentity.set(properties.email);
+    });
+    analytics.on('track', function(event, properties, options){
+      var latest = self.log.get();
+      latest.push("Track: " + event);
+      self.log.set(latest);
+
     });
   });
 
   Template.mainLayout.helpers({
-    analyticPage:     function() { return Template.instance().analyticPage.get() },
-    analyticIdentify: function() { return Template.instance().analyticIdentify.get() },
-    analyticTrack:    function() { return Template.instance().analyticTrack.get() }
+    log:     function() { return Template.instance().log.get(); },
+    currentIdentity: function() { return Template.instance().currentIdentity.get(); }
   });
 
 }

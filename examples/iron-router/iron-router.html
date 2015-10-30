@@ -17,17 +17,17 @@
     {{> yield}}
   </div>
   <div>
+    <h3>Current Identity</h3>
+    {{currentIdentity}}
+  </div>
+  <div>
     <h3>Latest Analytics Logged</h3>
     <ul>
-      <li>
-        Page: <strong>{{analyticPage}}</strong>
-      </li>
-      <li>
-        Identify: <strong>{{analyticIdentify}}</strong>
-      </li>
-      <li>
-        Track: <strong>{{analyticTrack}}</strong>
-      </li>
+      {{#each log}}
+        <li>
+          {{this}}
+        </li>
+      {{/each}}
     </ul>
   </div>
   <p>Want to see more detail? Call <code style="background-color: blueviolet; padding: 3px 6px; color: white;">analytics.debug()</code> in the browser console and refresh.</p>

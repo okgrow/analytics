@@ -88,8 +88,13 @@ If your project doesn't use this package, then don't worry as it will not affect
 
 ### Debugging
 
-When adding your platforms and setting events to track, you'll probably want to keep debug on locally. This will log all the analytics package's activity to the console.  
-In the console:  
+When adding your platforms and setting events to track, you'll probably want to keep debug on locally. This will log all the analytics package's activity to the console.
+In the console:
 `> analytics.debug()`
 
 Turn debug off with `analytics.debug(false)`
+
+
+### License
+
+Released under the [MIT license](https://github.com/okgrow/analytics/blob/master/License.md).

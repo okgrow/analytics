@@ -21,6 +21,14 @@
     {{currentIdentity}}
   </div>
   <div>
+    <h3>Oath Integration</h3>
+    {{#if currentUser}}
+    <p>{{isOath}}</p>
+    {{else}}
+    <p>Not signed in</p>
+    {{/if}}
+  </div>
+  <div>
     <h3>Latest Analytics Logged</h3>
     <ul>
       {{#each log}}

@@ -21,6 +21,14 @@
     {{currentIdentity}}
   </div>
   <div>
+    <h3>OAuth Integration</h3>
+    {{#if currentUser}}
+    <p>{{isOauth}}</p>
+    {{else}}
+    <p>Not signed in</p>
+    {{/if}}
+  </div>
+  <div>
     <h3>Latest Analytics Logged</h3>
     <ul>
       {{#each log}}

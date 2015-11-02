@@ -30,6 +30,7 @@ if (Meteor.isClient) {
 
 
   Template.mainLayout.onCreated(function () {
+    Meteor.subscribe('oauthInfo');
     var self = this;
     self.currentIdentity = new ReactiveVar(analytics._user._getTraits().email || 'No Identity Set');
     self.log = new ReactiveVar([]);
@@ -54,7 +55,37 @@ if (Meteor.isClient) {
 
   Template.mainLayout.helpers({
     log:     function() { return Template.instance().log.get(); },
-    currentIdentity: function() { return Template.instance().currentIdentity.get(); }
+    currentIdentity: function() { return Template.instance().currentIdentity.get(); },
+    isOauth: function() {
+      var user = Meteor.user();
+      var message = "";
+      if (user && user.services) {
+        if (user.services.facebook) {
+          message = "Signed in with Facebook as " + user.services.facebook.name + " (" + user.services.facebook.email + ")";
+        } else if (user.services.github) {
+          message = "Signed in with Github as " + user.services.github.username + " (" + user.services.github.email + ")";
+        } else if (user.services.google) {
+          message = "Signed in with Google as " + user.services.google.name + " (" + user.services.google.email + ")";
+        } else {
+          message = "Not an oauth login"
+        };
+        return message;
+      }
+    }
   });
+}
 
+if (Meteor.isServer) {
+  Meteor.publish('oauthInfo', function() {
+    return Meteor.users.find(
+          {_id: this.userId},
+          {fields: {
+            'services.facebook.name': 1,
+            'services.facebook.email': 1,
+            'services.github.username': 1,
+            'services.github.email': 1,
+            'services.google.name': 1,
+            'services.google.email': 1
+          }});
+  });
 }

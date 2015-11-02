@@ -98,3 +98,12 @@ In the console:
 `> analytics.debug()`
 
 Turn debug off with `analytics.debug(false)`
+
+### Example Iron Router & Flow Router Apps
+
+This repo includes an `examples` directory containing 2 simple apps using iron router and flow router.
+
+These apps can be run from their directory with `meteor --settings settings.json`. You can also take a look with these apps on meteor.com at these links:
+
+Iron Router: http://okgrow-analytics-iron-router.meteor.com/
+Flow Router: http://okgrow-analytics-flow-router.meteor.com/

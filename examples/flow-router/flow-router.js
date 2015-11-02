@@ -56,7 +56,7 @@ if (Meteor.isClient) {
   Template.mainLayout.helpers({
     log:     function() { return Template.instance().log.get(); },
     currentIdentity: function() { return Template.instance().currentIdentity.get(); },
-    isOath: function() {
+    isOauth: function() {
       var user = Meteor.user();
       var message = "";
       if (user.services.facebook) {

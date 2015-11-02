@@ -59,16 +59,18 @@ if (Meteor.isClient) {
     isOauth: function() {
       var user = Meteor.user();
       var message = "";
-      if (user.services.facebook) {
-        message = "Signed in with Facebook as " + user.services.facebook.name + " (" + user.services.facebook.email + ")";
-      } else if (user.services.github) {
-        message = "Signed in with Github as " + user.services.github.username + " (" + user.services.github.email + ")";
-      } else if (user.services.google) {
-        message = "Signed in with Google as " + user.services.google.name + " (" + user.services.google.email + ")";
-      } else {
-        message = "Not an oauth login"
-      };
-      return message;
+      if (user && user.services) {
+        if (user.services.facebook) {
+          message = "Signed in with Facebook as " + user.services.facebook.name + " (" + user.services.facebook.email + ")";
+        } else if (user.services.github) {
+          message = "Signed in with Github as " + user.services.github.username + " (" + user.services.github.email + ")";
+        } else if (user.services.google) {
+          message = "Signed in with Google as " + user.services.google.name + " (" + user.services.google.email + ")";
+        } else {
+          message = "Not an oauth login"
+        };
+        return message;
+      }
     }
   });
 }

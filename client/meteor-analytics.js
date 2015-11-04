@@ -108,7 +108,8 @@ if (_FlowRouter) {
       page.search = "";
     }
     if (context.oldRoute && context.oldRoute.path) {
-      page.referrer = window.location.origin + context.oldRoute.path;
+      // Todo: find a way to get the last path url without using a "_" key/function, since it could change in future releases of FLowRouter.
+      page.referrer = window.location.origin + _FlowRouter._oldExitPath;
     }
 
     trackPageWhenReady(page.name, page);

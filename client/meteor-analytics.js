@@ -91,11 +91,15 @@ if (_IronRouter) {
 }
 
 if (_FlowRouter) {
+  var lastRoutePath;
   _FlowRouter.triggers.enter([function(context){
     var page = {};
-    page.path = context.context.pathname;
+    page.path = context.path;
     page.title = context.context.title;
     page.url = window.location.origin + page.path;
+
+    _FlowRouter.lastRoutePath = lastRoutePath;
+    lastRoutePath = page.path;
 
     if (context.route && context.route.name) {
       page.name = context.route.name;
@@ -107,9 +111,10 @@ if (_FlowRouter) {
     } else {
       page.search = "";
     }
-    if (context.oldRoute && context.oldRoute.path) {
-      // Todo: find a way to get the last path url without using a "_" key/function, since it could change in future releases of FLowRouter.
-      page.referrer = window.location.origin + _FlowRouter._oldExitPath;
+    if (_FlowRouter.lastRoutePath) {
+      page.referrer = window.location.origin + _FlowRouter.lastRoutePath;
+    } else {
+      page.referrer = document.referrer
     }
 
     trackPageWhenReady(page.name, page);

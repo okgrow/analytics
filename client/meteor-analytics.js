@@ -91,15 +91,11 @@ if (_IronRouter) {
 }
 
 if (_FlowRouter) {
-  var lastRoutePath;
   _FlowRouter.triggers.enter([function(context){
     var page = {};
     page.path = context.path;
     page.title = context.context.title;
     page.url = window.location.origin + page.path;
-
-    _FlowRouter.lastRoutePath = lastRoutePath;
-    lastRoutePath = page.path;
 
     if (context.route && context.route.name) {
       page.name = context.route.name;
@@ -114,8 +110,9 @@ if (_FlowRouter) {
     if (_FlowRouter.lastRoutePath) {
       page.referrer = window.location.origin + _FlowRouter.lastRoutePath;
     } else {
-      page.referrer = document.referrer
+      page.referrer = document.referrer;
     }
+    _FlowRouter.lastRoutePath = page.path;
 
     trackPageWhenReady(page.name, page);
   }]);

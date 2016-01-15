@@ -106,3 +106,7 @@ Flow Router: http://okgrow-analytics-flow-router.meteor.com/
 ### License
 
 Released under the [MIT license](https://github.com/okgrow/analytics/blob/master/License.md).
+
+### Contributing
+
+Issues and Pull Requests are always welcome. Please read our [contribution guidelines](https://github.com/okgrow/guides/blob/master/contributing.md).

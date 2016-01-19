@@ -15,7 +15,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
     "analyticsSettings": {
       // Add your analytics tracking ids here (remove this line before running)
       "Google Analytics" : {"trackingId": "Your tracking ID"},
-      "Amplitude"        : {"apikey": "..."},
+      "Amplitude"        : {"apiKey": "..."},
       "Chartbeat"        : {"uid": "..."},
       "comScore"         : {"c2": "..."},
       "HubSpot"          : {"portalId": "..."},

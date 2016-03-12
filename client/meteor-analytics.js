@@ -91,10 +91,17 @@ if (_IronRouter) {
 }
 
 if (_FlowRouter) {
+  // something context & context.context don't exist, see: #93
   _FlowRouter.triggers.enter([function(context){
     var page = {};
-    page.path = context.path;
-    page.title = context.context.title;
+
+    if (context.path){
+      page.path = context.path;
+    }
+    if (context.context && context.context.title){
+      page.title = context.context.title;
+    }
+
     page.url = window.location.origin + page.path;
 
     if (context.route && context.route.name) {
@@ -102,7 +109,7 @@ if (_FlowRouter) {
     } else {
       page.name = page.path;
     }
-    if (context.context.querystring) {
+    if (context.context && context.context.querystring) {
       page.search = "?" + context.context.querystring;
     } else {
       page.search = "";

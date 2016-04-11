@@ -49,7 +49,18 @@ logged with the follow parameters:
  * `search`: the URL's query string, if provided. blank otherwise
  * `referrer`: hostname + old path, if coming from a previous route
 
-To manually log a page view: `analytics.page('page name')`
+To disable automatic page view tracking change `Meteor.settings` as shown below then manually log a page view by calling `analytics.page('page name')`:
+
+```
+{
+  "public": {
+    "analyticsSettings": {
+      // Disable autorun if you do not want analytics running on every route (remove this line before running)
+      "autorun"  : false
+    }
+  }
+}
+```
 
 ### Log signin/signout
 

@@ -27,4 +27,6 @@ Package.onUse(function(api) {
     'client/collections.js',
     'client/meteor-analytics.js',
   ], 'client');
+
+  api.export('analytics', ['client']);
 });

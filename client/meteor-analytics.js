@@ -153,7 +153,4 @@ Meteor.startup(function () {
 
 
 analytics = this.analytics;
-try {
-    delete this.analytics;
-} catch (e) {
-}
+delete this.analytics;

@@ -32,7 +32,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
 
 It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
 
-There are other options which we haven't documented here yet, to see them search for your specific integration [in this file](https://github.com/okgrow/analytics.js/blob/okgrow-supported-integrations/analytics.js) and look at the options and their defaults that are set with `.option(...)`.
+There are other options which we haven't documented here yet, to see them search for your specific integration [in this file](https://github.com/okgrow/analytics.js/blob/master/analytics.js) and look at the options and their defaults that are set with `.option(...)`.
 
 If you use a different service for tracking events or page views and you think it's popular enough that we should add it then please open an issue on the repo and we'll see how many supporters we get. Each additional integration adds a small amount to the file size so we would like to support only the most common ones.
 

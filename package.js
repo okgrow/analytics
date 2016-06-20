@@ -1,6 +1,6 @@
 Package.describe({
   name: 'okgrow:analytics',
-  version: '1.0.7',
+  version: '1.0.6',
   summary: 'Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor',
   git: 'https://github.com/okgrow/analytics',
   documentation: 'README.md'
@@ -27,6 +27,4 @@ Package.onUse(function(api) {
     'client/collections.js',
     'client/meteor-analytics.js',
   ], 'client');
-
-  api.export('analytics', ['client']);
 });

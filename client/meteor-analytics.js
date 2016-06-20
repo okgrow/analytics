@@ -150,7 +150,3 @@ Meteor.startup(function () {
     Tracker.autorun(trackLogins);
   }
 });
-
-
-analytics = this.analytics;
-delete this.analytics;

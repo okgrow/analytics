@@ -5,6 +5,19 @@ Use one API to record and send your data from your Meteor app to your analytics 
 
 `> meteor add okgrow:analytics`
 
+## Supported Analytic Services
+* Amplitude
+* Chartbeat
+* comScore
+* Google Analytics
+* HubSpot
+* Intercom
+* Keen IO
+* KISSmetrics
+* Mixpanel
+* Quantcast
+* Segment.io
+
 ## Configuration
 
 Add various platforms by adding each tool's configuration to your `settings.json` file:

@@ -2,21 +2,29 @@ if (Meteor.isClient) {
   Router.route('/', function () {
     this.layout('mainLayout');
     this.render('one');
+  }, {
+    name: 'home'
   });
 
   Router.route('/one', function () {
     this.layout('mainLayout');
     this.render('one');
+  }, {
+    name: 'one'
   });
 
   Router.route('/two', function () {
     this.layout('mainLayout');
     this.render('two');
+  }, {
+    name: 'two'
   });
 
   Router.route('/three', function () {
     this.layout('mainLayout');
     this.render('three');
+  }, {
+    name: 'three'
   });
 
 

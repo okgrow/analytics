@@ -1,11 +1,11 @@
 # Complete analytics integration for Meteor
-Use one API to record and send your data from your Meteor app to your analytics platforms.
+Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to record and send your data from your Meteor app to your analytics platforms.
 
 ## Installation
 
 `> meteor add okgrow:analytics`
 
-## Supported Analytic Services
+## Currently Supported Analytic Services
 * Amplitude
 * Chartbeat
 * comScore
@@ -90,7 +90,7 @@ analytics.track("Bought Ticket", {
 });
 ```
 
-See the [analytics.js track documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
+Check Segment.io's [analytics.js track documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
 
 ### Track visitor scrolling
 

@@ -1,5 +1,6 @@
 // TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
-var SETTINGS = Meteor.settings && Meteor.settings.public && Meteor.settings.public.analyticsSettings || {};
+var SETTINGS = Meteor.settings && Meteor.settings.public &&
+               Meteor.settings.public.analyticsSettings || {};
 
 // analytics.js might not have loaded it's integrations by the time we start
 // tracking events, page views and identifies.
@@ -28,7 +29,7 @@ var identifyWhenReady = function () {
 * Figure out the user's correct email address. This helps the differing keys
 * in the database when using oAuth login.
 */
-getUserEmail = function(){
+getUserEmail = function() {
   if (Meteor.userId()) {
     var user = AnalyticsUsers.findOne({_id: Meteor.userId()}, {
       fields: {
@@ -78,7 +79,6 @@ var trackLogins = function () {
   initialized = true;
 };
 
-
 var _IronRouter = (Package['iron:router'] && Package['iron:router'].Router);
 var _FlowRouter = (Package['kadira:flow-router'] && Package['kadira:flow-router'].FlowRouter) ||
                   (Package['meteorhacks:flow-router'] && Package['meteorhacks:flow-router'].FlowRouter) ||
@@ -87,13 +87,13 @@ var _FlowRouter = (Package['kadira:flow-router'] && Package['kadira:flow-router'
 
 if (_FlowRouter && SETTINGS.autorun !== false) {
   // something context & context.context don't exist, see: #93
-  _FlowRouter.triggers.enter([function(context){
+  _FlowRouter.triggers.enter([function(context) {
     var page = {};
 
-    if (context.path){
+    if (context.path) {
       page.path = context.path;
     }
-    if (context.context && context.context.title){
+    if (context.context && context.context.title) {
       page.title = context.context.title;
     }
 
@@ -120,7 +120,7 @@ if (_FlowRouter && SETTINGS.autorun !== false) {
   }]);
 }
 
-initIronRouter = function(){
+initIronRouter = function() {
   if (_IronRouter) {
     _IronRouter.onRun(function() {
       var router = this;
@@ -133,7 +133,7 @@ initIronRouter = function(){
 var userEmail;
 Meteor.startup(function () {
   if (!_.isEmpty(SETTINGS)) {
-    if(SETTINGS.autorun !== false){
+    if (SETTINGS.autorun !== false) {
       initIronRouter();
     }
     analytics.initialize(SETTINGS);

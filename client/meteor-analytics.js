@@ -1,3 +1,6 @@
+// TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
+var SETTINGS = Meteor.settings && Meteor.settings.public && Meteor.settings.public.analyticsSettings || {};
+
 // analytics.js might not have loaded it's integrations by the time we start
 // tracking events, page views and identifies.
 // So we can use these *WhenReady() functions to cause the action to be
@@ -82,7 +85,7 @@ var _FlowRouter = (Package['kadira:flow-router'] && Package['kadira:flow-router'
                   (Package['kadira:flow-router-ssr'] && Package['kadira:flow-router-ssr'].FlowRouter) ||
                   (Package['meteorhacks:flow-router-ssr'] && Package['meteorhacks:flow-router-ssr'].FlowRouter);
 
-if (_FlowRouter) {
+if (_FlowRouter && SETTINGS.autorun !== false) {
   // something context & context.context don't exist, see: #93
   _FlowRouter.triggers.enter([function(context){
     var page = {};
@@ -129,14 +132,13 @@ initIronRouter = function(){
 
 var userEmail;
 Meteor.startup(function () {
-  if (Meteor.settings && Meteor.settings.public && Meteor.settings.public.analyticsSettings) {
-    var settings = Meteor.settings.public.analyticsSettings;
-    if(settings.autorun !== false){
+  if (!_.isEmpty(SETTINGS)) {
+    if(SETTINGS.autorun !== false){
       initIronRouter();
     }
-    analytics.initialize(settings);
+    analytics.initialize(SETTINGS);
   } else {
-    console.log("Missing analyticsSettings in Meteor.settings.public");
+    console.error("Missing analyticsSettings in Meteor.settings.public");
   }
 
   if (Package['accounts-base']) {

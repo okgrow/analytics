@@ -1,3 +1,6 @@
+/* global Meteor */
+/* global Mongo */
+
 Meteor.publish(null, function() {
   if(this.userId) {
     var self = this;

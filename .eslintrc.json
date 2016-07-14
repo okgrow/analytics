@@ -1,10 +1,10 @@
 {
   "plugins": [
-    "meteor",
+    "meteor"
   ],
   "extends": [
     "airbnb/base",
-    "plugin:meteor/recommended",
+    "plugin:meteor/recommended"
   ],
   "env": {
     "es6": true

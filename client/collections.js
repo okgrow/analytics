@@ -1,1 +1,1 @@
-AnalyticsUsers = new Mongo.Collection('analyticsusers');
+AnalyticsUsers = new Mongo.Collection("analyticsusers");

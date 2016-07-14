@@ -29,7 +29,7 @@ if (Meteor.isClient) {
 
   Template.mainLayout.onCreated(function () {
     Meteor.subscribe('oauthInfo');
-    var self = this;
+    const self = this;
     self.log = new ReactiveVar([]);
     self.currentIdentity = new ReactiveVar("No Identity Set");
 
@@ -38,39 +38,39 @@ if (Meteor.isClient) {
 
     self.currentIdentity.set(analytics._user._getTraits().email || "No Identity Set");
 
-    analytics.on('page', function(event, properties, options) {
-      var latest = self.log.get();
-      latest.push("Page: " + options.path);
+    analytics.on('page', (event, properties, options) => {
+      const latest = self.log.get();
+      latest.push(`Page: ${options.path}`);
       self.log.set(latest);
     });
 
-    analytics.on('identify', function(event, properties, options) {
-      var latest = self.log.get();
-      latest.push("Identify: " + properties.email);
+    analytics.on('identify', (event, properties, options) => {
+      const latest = self.log.get();
+      latest.push(`Identify: ${properties.email}`);
       self.log.set(latest);
       self.currentIdentity.set(properties.email);
     });
 
-    analytics.on('track', function(event, properties, options) {
-      var latest = self.log.get();
-      latest.push("Track: " + event);
+    analytics.on('track', (event, properties, options) => {
+      const latest = self.log.get();
+      latest.push(`Track: ${event}`);
       self.log.set(latest);
     });
   });
 
   Template.mainLayout.helpers({
-    log:     function() { return Template.instance().log.get(); },
-    currentIdentity: function() { return Template.instance().currentIdentity.get(); },
-    isOauth: function() {
-      var user = Meteor.user();
-      var message = "";
+    log() { return Template.instance().log.get(); },
+    currentIdentity() { return Template.instance().currentIdentity.get(); },
+    isOauth() {
+      const user = Meteor.user();
+      let message = "";
       if (user && user.services) {
         if (user.services.facebook) {
-          message = "Signed in with Facebook as " + user.services.facebook.name + " (" + user.services.facebook.email + ")";
+          message = `Signed in with Facebook as ${user.services.facebook.name} (${user.services.facebook.email})`;
         } else if (user.services.github) {
-          message = "Signed in with Github as " + user.services.github.username + " (" + user.services.github.email + ")";
+          message = `Signed in with Github as ${user.services.github.username} (${user.services.github.email})`;
         } else if (user.services.google) {
-          message = "Signed in with Google as " + user.services.google.name + " (" + user.services.google.email + ")";
+          message = `Signed in with Google as ${user.services.google.name} (${user.services.google.email})`;
         } else {
           message = "Not an oauth login";
         }

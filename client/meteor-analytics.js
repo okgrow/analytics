@@ -1,6 +1,16 @@
+/* global Meteor */
+/* global Mongo */
+/* global analytics */
+/* global Package */
+/* global AnalyticsUsers */
+/* global Tracker */
+/* eslint-disable no-underscore-dangle */
 // TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
-var SETTINGS = Meteor.settings && Meteor.settings.public &&
-               Meteor.settings.public.analyticsSettings || {};
+
+let userEmail;
+let initialized = false;
+const SETTINGS = Meteor.settings && Meteor.settings.public &&
+                 Meteor.settings.public.analyticsSettings || {};
 
 // analytics.js might not have loaded it's integrations by the time we start
 // tracking events, page views and identifies.
@@ -9,19 +19,19 @@ var SETTINGS = Meteor.settings && Meteor.settings.public &&
 //
 // TODO consider whether we should export something like this, maybe provide
 // our own api instead of just using analytics.js' api
-var trackEventWhenReady = function () {
-  var _args = arguments;
-  analytics.ready(function () {analytics.track.apply(this, _args);});
+const trackEventWhenReady = (...args) => {
+  const _args = args;
+  analytics.ready(() => analytics.track.apply(this, _args));
 };
 
-var trackPageWhenReady = function () {
-  var _args = arguments;
-  analytics.ready(function () {analytics.page.apply(this, _args);});
+const trackPageWhenReady = (...args) => {
+  const _args = args;
+  analytics.ready(() => analytics.page.apply(this, _args));
 };
 
-var identifyWhenReady = function () {
-  var _args = arguments;
-  analytics.ready(function () {analytics.identify.apply(this, _args);});
+const identifyWhenReady = (...args) => {
+  const _args = args;
+  analytics.ready(() => analytics.identify.apply(this, _args));
 };
 
 /*
@@ -29,39 +39,37 @@ var identifyWhenReady = function () {
 * Figure out the user's correct email address. This helps the differing keys
 * in the database when using oAuth login.
 */
-getUserEmail = function() {
+getUserEmail = function getUserEmail() {
   if (Meteor.userId()) {
-    var user = AnalyticsUsers.findOne({_id: Meteor.userId()}, {
+    const user = AnalyticsUsers.findOne({ _id: Meteor.userId() }, {
       fields: {
         emails: 1,
         "services.facebook.email": 1,
         "services.google.email": 1,
-        "services.github.email": 1
-      }
+        "services.github.email": 1,
+      },
     });
-    if ( user && user.emails ) {
+    if (user && user.emails) {
       if (user.emails[0]) {
         return user.emails[0].address;
-      } else {
-        return null;
       }
-    } else if ( user && user.services ) {
-      var services = user.services;
-      if ( services.facebook ) {
+      return null;
+    } else if (user && user.services) {
+      const services = user.services;
+      if (services.facebook) {
         return services.facebook.email;
-      } else if ( services.github ) {
+      } else if (services.github) {
         return services.github.email;
-      } else if ( services.google ) {
+      } else if (services.google) {
         return services.google.email;
-      } else {
-        return null;
       }
+      return null;
     }
   }
 };
 
-var initialized;
-var trackLogins = function () {
+
+const trackLogins = function trackLogins() {
   // don't run the first time, but we need to access Meteor.userId()
   // so that it's reactive
   Meteor.userId();
@@ -70,7 +78,7 @@ var trackLogins = function () {
     if (Meteor.userId()) {
       // TODO I think it's not guaranteed that userEmail has been set because
       // the 'analyticsusers' publication might not be ready yet.
-      identifyWhenReady(Meteor.userId(), {email: userEmail});
+      identifyWhenReady(Meteor.userId(), { email: userEmail });
       trackEventWhenReady("Signed in");
     } else {
       trackEventWhenReady("Signed out");
@@ -79,16 +87,16 @@ var trackLogins = function () {
   initialized = true;
 };
 
-var _IronRouter = (Package['iron:router'] && Package['iron:router'].Router);
-var _FlowRouter = (Package['kadira:flow-router'] && Package['kadira:flow-router'].FlowRouter) ||
-                  (Package['meteorhacks:flow-router'] && Package['meteorhacks:flow-router'].FlowRouter) ||
-                  (Package['kadira:flow-router-ssr'] && Package['kadira:flow-router-ssr'].FlowRouter) ||
-                  (Package['meteorhacks:flow-router-ssr'] && Package['meteorhacks:flow-router-ssr'].FlowRouter);
+const _IronRouter = (Package["iron:router"] && Package["iron:router"].Router);
+const _FlowRouter = (Package["kadira:flow-router"] && Package["kadira:flow-router"].FlowRouter) ||
+                    (Package["meteorhacks:flow-router"] && Package["meteorhacks:flow-router"].FlowRouter) ||
+                    (Package["kadira:flow-router-ssr"] && Package["kadira:flow-router-ssr"].FlowRouter) ||
+                    (Package["meteorhacks:flow-router-ssr"] && Package["meteorhacks:flow-router-ssr"].FlowRouter);
 
 if (_FlowRouter && SETTINGS.autorun !== false) {
   // something context & context.context don't exist, see: #93
-  _FlowRouter.triggers.enter([function(context) {
-    var page = {};
+  _FlowRouter.triggers.enter([function (context) {
+    const page = {};
 
     if (context.path) {
       page.path = context.path;
@@ -105,7 +113,7 @@ if (_FlowRouter && SETTINGS.autorun !== false) {
       page.name = page.path;
     }
     if (context.context && context.context.querystring) {
-      page.search = "?" + context.context.querystring;
+      page.search = `? ${context.context.querystring}`;
     } else {
       page.search = "";
     }
@@ -120,18 +128,18 @@ if (_FlowRouter && SETTINGS.autorun !== false) {
   }]);
 }
 
-initIronRouter = function() {
+initIronRouter = function initIronRouter() {
   if (_IronRouter) {
-    _IronRouter.onRun(function() {
-      var router = this;
+    _IronRouter.onRun(function () {
+      const router = this;
       Tracker.afterFlush(function () { trackPageWhenReady(router.route.getName()); });
       this.next();
     });
   }
-}
+};
 
-var userEmail;
-Meteor.startup(function () {
+
+Meteor.startup(() => {
   if (!_.isEmpty(SETTINGS)) {
     if (SETTINGS.autorun !== false) {
       initIronRouter();
@@ -141,7 +149,7 @@ Meteor.startup(function () {
     console.error("Missing analyticsSettings in Meteor.settings.public");
   }
 
-  if (Package['accounts-base']) {
+  if (Package["accounts-base"]) {
     Tracker.autorun(function () {
       userEmail = getUserEmail();
     });

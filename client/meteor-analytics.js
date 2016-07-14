@@ -5,20 +5,21 @@
 /* global AnalyticsUsers */
 /* global Tracker */
 /* eslint-disable no-underscore-dangle */
-// TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
 
+// TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
 let userEmail;
 let initialized = false;
 const SETTINGS = Meteor.settings && Meteor.settings.public &&
                  Meteor.settings.public.analyticsSettings || {};
 
-// analytics.js might not have loaded it's integrations by the time we start
-// tracking events, page views and identifies.
-// So we can use these *WhenReady() functions to cause the action to be
-// deferred until all the intgrations are ready.
-//
-// TODO consider whether we should export something like this, maybe provide
-// our own api instead of just using analytics.js' api
+/*
+* analytics.js might not have loaded it's integrations by the time we start
+* tracking events, page views and identifies.
+* So we can use these *WhenReady() functions to cause the action to be
+* deferred until all the intgrations are ready.
+* TODO consider whether we should export something like this, maybe provide
+* our own api instead of just using analytics.js' api.
+*/
 const trackEventWhenReady = (...args) => {
   const _args = args;
   analytics.ready(() => analytics.track.apply(this, _args));
@@ -70,11 +71,10 @@ getUserEmail = function getUserEmail() {
 
 
 const trackLogins = function trackLogins() {
-  // don't run the first time, but we need to access Meteor.userId()
-  // so that it's reactive
+  // Don't run on first time. We need to access Meteor.userId() for reactivity.
   Meteor.userId();
   if (initialized) {
-    // when Meteor.userId() changes this will run
+    // Ehen Meteor.userId() changes this will run.
     if (Meteor.userId()) {
       // TODO I think it's not guaranteed that userEmail has been set because
       // the 'analyticsusers' publication might not be ready yet.

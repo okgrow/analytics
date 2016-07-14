@@ -129,7 +129,7 @@ if (_FlowRouter && SETTINGS.autorun !== false) {
   }]);
 }
 
-initIronRouter = function initIronRouter() {
+const initIronRouter = function initIronRouter() {
   if (_IronRouter) {
     _IronRouter.onRun(function () {
       const router = this;

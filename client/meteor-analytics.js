@@ -4,7 +4,7 @@
 /* global Package */
 /* global AnalyticsUsers */
 /* global Tracker */
-/* eslint-disable no-underscore-dangle */
+/* global _ */
 
 // TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
 let userEmail;
@@ -40,7 +40,7 @@ const identifyWhenReady = (...args) => {
 * Figure out the user's correct email address. This helps the differing keys
 * in the database when using oAuth login.
 */
-getUserEmail = function getUserEmail() {
+const getUserEmail = function getUserEmail() {
   if (Meteor.userId()) {
     const user = AnalyticsUsers.findOne({ _id: Meteor.userId() }, {
       fields: {
@@ -67,6 +67,7 @@ getUserEmail = function getUserEmail() {
       return null;
     }
   }
+  return null;
 };
 
 

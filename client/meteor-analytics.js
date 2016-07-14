@@ -1,10 +1,10 @@
-/* global Meteor */
-/* global Mongo */
-/* global analytics */
-/* global Package */
-/* global AnalyticsUsers */
-/* global Tracker */
-/* global _ */
+import { Meteor } from "meteor/meteor";
+// NOTE: Investiage this package imports
+import { Package } from "meteor/package";
+import { Tracker } from "meteor/tracker";
+import { analytics } from "../vendor/analytics.min.js";
+import AnalyticsUsers from "./collections.js";
+import _ from "underscore";
 
 // TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
 let userEmail;

@@ -18,6 +18,12 @@ Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libra
 * Quantcast
 * Segment.io
 
+## Development & Testing
+
+NOTE: Any ad-blocking web-browser extension may block the entire "okgrow:analytics" package due to the word "analytics" being used in the package name. This only occurs when running Meteor in development mode as the files are not bundled. To work around this issue run your application in production mode (see below).
+
+`meteor run --production --settings settings.json`
+
 ## Configuration
 
 Add various platforms by adding each tool's configuration to your `settings.json` file:
@@ -43,7 +49,7 @@ Add various platforms by adding each tool's configuration to your `settings.json
 }
 ```
 
-It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the plaform you're adding.
+It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the platform you're adding.
 
 There are other options which we haven't documented here yet, to see them search for your specific integration [in this file](https://github.com/okgrow/analytics.js/blob/master/analytics.js) and look at the options and their defaults that are set with `.option(...)`.
 

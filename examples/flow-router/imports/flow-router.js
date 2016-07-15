@@ -1,3 +1,5 @@
+import { analytics } from "meteor/okgrow:analytics";
+
 if (Meteor.isClient) {
 
   FlowRouter.route("/", {
@@ -39,6 +41,7 @@ if (Meteor.isClient) {
     self.currentIdentity.set(analytics._user._getTraits().email || "No Identity Set");
 
     analytics.on("page", (event, properties, options) => {
+      console.log("page ");
       const latest = self.log.get();
       latest.push(`Page: ${options.path}`);
       self.log.set(latest);

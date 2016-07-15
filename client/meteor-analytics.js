@@ -1,10 +1,9 @@
 import { Meteor } from "meteor/meteor";
-// NOTE: Investiage this package imports
-import { Package } from "meteor/package";
 import { Tracker } from "meteor/tracker";
-import { analytics } from "../vendor/analytics.min.js";
 import AnalyticsUsers from "./collections.js";
-import _ from "underscore";
+import analytics from "../vendor/analytics.min.js";
+// TODO: Validate how to import from npm depends
+// import _ from "underscore";
 
 // TODO Refactor to export this as a handy helper when Meteor 1.3 imports/exports are used.
 let userEmail;
@@ -69,7 +68,6 @@ const getUserEmail = function getUserEmail() {
   }
   return null;
 };
-
 
 const trackLogins = function trackLogins() {
   // Don't run on first time. We need to access Meteor.userId() for reactivity.
@@ -139,7 +137,6 @@ const initIronRouter = function initIronRouter() {
   }
 };
 
-
 Meteor.startup(() => {
   if (!_.isEmpty(SETTINGS)) {
     if (SETTINGS.autorun !== false) {
@@ -157,3 +154,5 @@ Meteor.startup(() => {
     Tracker.autorun(trackLogins);
   }
 });
+
+export { analytics };

@@ -1,7 +1,7 @@
-/* global Meteor */
-/* global Mongo */
+import { Meteor } from "meteor/meteor";
+import { Mongo } from "meteor/mongo";
 
-Meteor.publish(null, function() {
+Meteor.publish(null, function () {
   if (this.userId) {
     const self = this;
     const query = Meteor.users

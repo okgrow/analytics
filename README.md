@@ -20,7 +20,7 @@ Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libra
 
 ## Development & Testing
 
-NOTE: Any ad-blocking web-browser extension may block the entire "okgrow:analytics" package due to the word "analytics" being used in the package name. This only occurs when running Meteor in development mode as the files are not bundled. To work around this issue run your application in production mode (see below).
+NOTE: Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together. To work around this issue you can disable your ad-blocker whilst developing. To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
 
 `meteor run --production --settings settings.json`
 

@@ -6,14 +6,11 @@ import { initIronRouter } from "./iron-router.js";
 import { trackLogins, getUserEmail } from "./meteor-analytics.js";
 import "./flow-router.js";
 
-// TODO: Validate how to import from npm depends
-// import _ from "underscore";
-
 Meteor.startup(() => {
-  if (!_.isEmpty(SETTINGS)) {
-    if (SETTINGS.autorun !== false) {
-      initIronRouter();
-    }
+  if (SETTINGS) {
+    initIronRouter();
+    // FlowRouter handles its own initialisation. Funky things happen if you attempt,
+    // to initialise inside of Meteor.startup()
     analytics.initialize(SETTINGS);
   } else {
     console.error("Missing analyticsSettings in Meteor.settings.public");

@@ -2,7 +2,9 @@ import { trackPageWhenReady } from "./analytics-helpers.js";
 import { _FlowRouter } from "./routers.js";
 import { SETTINGS } from "./client-common.js";
 
-if (_FlowRouter && SETTINGS.autorun !== false) {
+const autoRun = SETTINGS && SETTINGS.autorun !== false;
+
+if (_FlowRouter && autoRun) {
   // something context & context.context don't exist, see: #93
   _FlowRouter.triggers.enter([function (context) {
     const page = {};

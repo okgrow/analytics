@@ -1,3 +1,3 @@
-import { analytics } from "./client/meteor-analytics.js";
+import { analytics } from "./client/client-startup.js";
 
 export { analytics };

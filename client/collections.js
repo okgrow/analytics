@@ -1,5 +1,5 @@
 import { Mongo } from "meteor/mongo";
 
-const AnalyticsUsers = new Mongo.Collection("analyticsusers");
+const AnalyticsUsers = new Mongo.Collection("AnalyticsUsers");
 
-export default AnalyticsUsers;
+export { AnalyticsUsers };

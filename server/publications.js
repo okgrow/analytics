@@ -15,7 +15,7 @@ Meteor.publish(null, function () {
           "services.facebook.email": 1,
         },
       });
-    Mongo.Collection._publishCursor(query, self, "analyticsusers");
+    Mongo.Collection._publishCursor(query, self, "AnalyticsUsers");
     return self.ready();
   }
   this.ready();

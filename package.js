@@ -6,15 +6,12 @@ Package.describe({
   documentation: "README.md",
 });
 
-Npm.depends({
-  underscore: "1.8.3",
-});
-
 Package.onUse(function (api) {
   api.versionsFrom("1.0.3.1");
 
-  // "ecmascript" is mandatory dependency to compile our es6.
+  // "ecmascript" is mandatory dependency to compile our package's es6 code.
   api.use("ecmascript");
+  // "es5-shim" adds better es5 support for legacy browsers.
   api.use("es5-shim");
 
   // weak dependencies indicate we will load after the following packages.

@@ -17,6 +17,7 @@ const getUserEmail = function getUserEmail() {
         "services.github.email": 1,
       },
     });
+    // TODO: Clean up/refactor code style.
     if (user && user.emails) {
       if (user.emails[0]) {
         return user.emails[0].address;
@@ -47,7 +48,7 @@ const trackLogins = function trackLogins() {
   // Don't run on first time. We need to access Meteor.userId() for reactivity.
   Meteor.userId();
   if (initialized) {
-    // Ehen Meteor.userId() changes this will run.
+    // When Meteor.userId() changes this will run.
     if (Meteor.userId()) {
       // TODO I think it's not guaranteed that userEmail has been set because
       // the 'AnalyticsUsers' publication might not be ready yet.

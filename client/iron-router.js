@@ -8,9 +8,7 @@ const initIronRouter = function initIronRouter() {
     _IronRouter.onRun(function ironRouterOnRun() {
       const router = this;
       if (SETTINGS.autorun !== false) {
-        Tracker.afterFlush(() => {
-          trackPageWhenReady(router.route.getName());
-        });
+        Tracker.afterFlush(() => trackPageWhenReady(router.route.getName()));
       }
       this.next();
     });

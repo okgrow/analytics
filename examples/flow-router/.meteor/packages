@@ -35,3 +35,4 @@ check
 reactive-var
 standard-minifier-css
 standard-minifier-js
+ecmascript

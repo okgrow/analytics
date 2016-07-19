@@ -1,31 +1,33 @@
+import { Meteor } from "meteor/meteor";
+import { analytics } from "meteor/okgrow:analytics";
+
 if (Meteor.isClient) {
-  Router.route("/", function () {
-    this.layout("mainLayout");
-    this.render("one");
-  }, {
-    name: "home",
+  FlowRouter.route("/", {
+    action(params) {
+      BlazeLayout.render("mainLayout", { main: "one" });
+    },
+    name: "Home", // used for track
   });
 
-  Router.route("/one", function () {
-    this.layout("mainLayout");
-    this.render("one");
-  }, {
-    name: "one",
+  FlowRouter.route("/one", {
+    action(params) {
+      BlazeLayout.render("mainLayout", { main: "one" });
+    },
+    name: "One", // used for track
   });
 
-  Router.route("/two", function () {
-    this.layout("mainLayout");
-    this.render("two");
-  }, {
-    name: "two",
+  FlowRouter.route("/two", {
+    action(params) {
+      BlazeLayout.render("mainLayout", { main: "two" });
+    },
+    name: "Two", // used for track
   });
 
-  Router.route("/three", function () {
-    this.layout("mainLayout");
-    this.render("three");
-  }, {
-    name: "three",
-  });
+  FlowRouter.route("/three", {
+    action(params) {
+      BlazeLayout.render("mainLayout", { main: "three" });
+    },
+  }); // without 'name', path is used for tracking
 
   Template.mainLayout.onCreated(function () {
     Meteor.subscribe("oauthInfo");

@@ -1,7 +1,7 @@
 import { Tracker } from "meteor/tracker";
-import { trackPageWhenReady } from "./analytics-helpers.js";
+import { trackPageWhenReady } from "./helpers.js";
 import { _IronRouter } from "./routers.js";
-import { SETTINGS } from "./client-common.js";
+import { SETTINGS } from "./constants.js";
 
 const initIronRouter = function initIronRouter() {
   if (_IronRouter) {

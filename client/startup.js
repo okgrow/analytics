@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Tracker } from "meteor/tracker";
-import { SETTINGS } from "./client-common.js";
+import { SETTINGS } from "./constants.js";
 import { initIronRouter } from "./iron-router.js";
 import { trackLogins, getUserEmail } from "./meteor-analytics.js";
 import analytics from "../vendor/analytics.min.js";

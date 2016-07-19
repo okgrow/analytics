@@ -18,7 +18,7 @@ Meteor.startup(() => {
   }
 
   if (Package["accounts-base"]) {
-    Tracker.autorun(function () {
+    Tracker.autorun(() => {
       userEmail = getUserEmail();
     });
     Tracker.autorun(trackLogins);

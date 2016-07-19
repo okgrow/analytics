@@ -5,10 +5,12 @@ import { SETTINGS } from "./constants";
 
 const initIronRouter = function initIronRouter() {
   if (_IronRouter) {
-    _IronRouter.onRun(function () {
+    _IronRouter.onRun(function ironRouterOnRun() {
       const router = this;
       if (SETTINGS.autorun !== false) {
-        Tracker.afterFlush(function () { trackPageWhenReady(router.route.getName()); });
+        Tracker.afterFlush(() => {
+          trackPageWhenReady(router.route.getName());
+        });
       }
       this.next();
     });

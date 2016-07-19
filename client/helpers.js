@@ -8,19 +8,13 @@ import analytics from "../vendor/analytics.min.js";
 * TODO consider whether we should export something like this, maybe provide
 * our own api instead of just using analytics.js' api.
 */
-const trackEventWhenReady = (...args) => {
-  const _args = args;
-  analytics.ready(() => analytics.track.apply(this, _args));
-};
+const trackEventWhenReady = (...args) =>
+  analytics.ready(() => analytics.track.apply(this, args));
 
-const trackPageWhenReady = (...args) => {
-  const _args = args;
-  analytics.ready(() => analytics.page.apply(this, _args));
-};
+const trackPageWhenReady = (...args) =>
+  analytics.ready(() => analytics.page.apply(this, args));
 
-const identifyWhenReady = (...args) => {
-  const _args = args;
-  analytics.ready(() => analytics.identify.apply(this, _args));
-};
+const identifyWhenReady = (...args) =>
+  analytics.ready(() => analytics.identify.apply(this, args));
 
 export { trackEventWhenReady, trackPageWhenReady, identifyWhenReady };

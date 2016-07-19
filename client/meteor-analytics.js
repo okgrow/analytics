@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
-import { AnalyticsUsers } from "./collections.js";
-import { trackEventWhenReady, identifyWhenReady } from "./helpers.js";
+import { AnalyticsUsers } from "./collections";
+import { trackEventWhenReady, identifyWhenReady } from "./helpers";
 
 /*
 * getUserEmail()

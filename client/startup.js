@@ -1,8 +1,8 @@
 import { Meteor } from "meteor/meteor";
 import { Tracker } from "meteor/tracker";
-import { SETTINGS } from "./constants.js";
-import { initIronRouter } from "./iron-router.js";
-import { trackLogins, getUserEmail } from "./meteor-analytics.js";
+import { SETTINGS } from "./constants";
+import { initIronRouter } from "./iron-router";
+import { trackLogins, getUserEmail } from "./meteor-analytics";
 import analytics from "../vendor/analytics.min.js";
 
 import "./flow-router.js";

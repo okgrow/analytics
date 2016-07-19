@@ -1,6 +1,6 @@
-import { trackPageWhenReady } from "./helpers.js";
-import { _FlowRouter } from "./routers.js";
-import { SETTINGS } from "./constants.js";
+import { trackPageWhenReady } from "./helpers";
+import { _FlowRouter } from "./routers";
+import { SETTINGS } from "./constants";
 
 const autoRun = SETTINGS && SETTINGS.autorun !== false;
 

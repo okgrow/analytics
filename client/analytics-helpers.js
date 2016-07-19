@@ -23,4 +23,4 @@ const identifyWhenReady = (...args) => {
   analytics.ready(() => analytics.identify.apply(this, _args));
 };
 
-export { analytics, trackEventWhenReady, trackPageWhenReady, identifyWhenReady };
+export { trackEventWhenReady, trackPageWhenReady, identifyWhenReady };

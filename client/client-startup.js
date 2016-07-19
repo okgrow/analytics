@@ -1,9 +1,10 @@
 import { Meteor } from "meteor/meteor";
 import { Tracker } from "meteor/tracker";
-import { analytics } from "./analytics-helpers.js";
 import { SETTINGS } from "./client-common.js";
 import { initIronRouter } from "./iron-router.js";
 import { trackLogins, getUserEmail } from "./meteor-analytics.js";
+import analytics from "../vendor/analytics.min.js";
+
 import "./flow-router.js";
 
 Meteor.startup(() => {
@@ -24,4 +25,3 @@ Meteor.startup(() => {
   }
 });
 
-export { analytics };

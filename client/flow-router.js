@@ -6,7 +6,7 @@ const autoRun = SETTINGS && SETTINGS.autorun !== false;
 
 if (_FlowRouter && autoRun) {
   // something context & context.context don't exist, see: #93
-  _FlowRouter.triggers.enter([(context) => {
+  _FlowRouter.triggers.enter((context) => {
     const page = {};
 
     if (context.path) {
@@ -36,5 +36,5 @@ if (_FlowRouter && autoRun) {
     _FlowRouter.lastRoutePath = page.path;
 
     trackPageWhenReady(page.name, page);
-  }]);
+  });
 }

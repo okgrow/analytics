@@ -2,7 +2,7 @@
 Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to record and send your data from your Meteor app to your analytics platforms.
 
 ### Pre Meteor 1.3.1
-For Meteor Apps older then v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1
+For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1
 
 ## Installation
 

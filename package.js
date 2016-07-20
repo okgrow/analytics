@@ -1,12 +1,14 @@
 Package.describe({
   name: "okgrow:analytics",
-  version: "1.1.0",
+  version: "2.0.0",
   summary: "Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor",
   git: "https://github.com/okgrow/analytics",
   documentation: "README.md",
 });
 
 Package.onUse(function (api) {
+  // NOTE: symlink with example app causes error, upgrade to 1.3.2 or higher
+  // to run the examples. https://github.com/meteor/meteor/issues/6665
   api.versionsFrom("1.3.1");
 
   // "ecmascript" is mandatory dependency to compile our package's es6 code.
@@ -26,6 +28,7 @@ Package.onUse(function (api) {
   api.use("meteorhacks:flow-router@1.17.2", "client", { weak: true });
   api.use("kadira:flow-router@2.6.0", "client", { weak: true });
 
+  // For backward compatibility (< v1.3).
   try {
     api.mainModule("client-main.js", "client");
     api.mainModule("server-main.js", "server");

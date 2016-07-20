@@ -28,14 +28,10 @@ Package.onUse(function (api) {
   api.use("meteorhacks:flow-router@1.17.2", "client", { weak: true });
   api.use("kadira:flow-router@2.6.0", "client", { weak: true });
 
-  // For backward compatibility (< v1.3).
-  try {
-    api.mainModule("client-main.js", "client");
-    api.mainModule("server-main.js", "server");
-  } catch (e) {
-    // We supress and ignore error for backwards compatibility for apps < 1.3.1,
-    // reference to issue here https://github.com/meteor/meteor/issues/6713
-  }
-  // For backward compatibility.
+  // Client and server entry points
+  api.mainModule("client-main.js", "client");
+  api.mainModule("server-main.js", "server");
+
+  // For backward compatibility, pre import/export syntax
   api.export("analytics", ["client", "server"]);
 });

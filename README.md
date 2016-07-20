@@ -1,12 +1,12 @@
 # Complete analytics integration for Meteor
 Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to record and send your data from your Meteor app to your analytics platforms.
 
+### Pre Meteor 1.3.1
+For Meteor Apps older then v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1
+
 ## Installation
 
 `> meteor add okgrow:analytics`
-
-### NOTE: 
-For Meteor Apps older then v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1 
 
 ## Currently Supported Analytic Services
 * Amplitude
@@ -21,9 +21,9 @@ For Meteor Apps older then v1.3.1, please use [v1.0.9](https://github.com/okgrow
 * Quantcast
 * Segment.io
 
-## Development & Testing
+## Ad-blocker
 
-NOTE: Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together. To work around this issue you can disable your ad-blocker whilst developing. To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
+PLEASE NOTE: Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together. To work around this issue you can disable your ad-blocker whilst developing. To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
 
 `meteor run --production --settings settings.json`
 

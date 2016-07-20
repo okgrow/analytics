@@ -5,6 +5,9 @@ Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libra
 
 `> meteor add okgrow:analytics`
 
+### NOTE: 
+For Meteor Apps older then v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1 
+
 ## Currently Supported Analytic Services
 * Amplitude
 * Chartbeat

@@ -23,7 +23,7 @@ For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow
 
 ## Ad-blocker
 
-PLEASE NOTE: Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together. To work around this issue you can disable your ad-blocker whilst developing. To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
+PLEASE NOTE: Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together and minified. To work around this issue you can disable your ad-blocker whilst developing. To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
 
 `meteor run --production --settings settings.json`
 

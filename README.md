@@ -60,14 +60,13 @@ If you use a different service for tracking events or page views and you think i
 
 ### Page views
 
-Compatible with either IronRouter or FlowRouter (even pre-2.0 FlowRouter),
-this package will log page views automatically. For FlowRouter, the page is
+Compatible with any router,
+this package will log page views automatically. The page is
 logged with the follow parameters:
 
  * `path`: path part of the URL
- * `title`: the page's title, as specified by the route
+ * `title`: the page's title
  * `url`: hostname + path
- * `name`: route name if set, otherwise equivalent to `path`
  * `search`: the URL's query string, if provided. blank otherwise
  * `referrer`: hostname + old path, if coming from a previous route
 
@@ -129,8 +128,8 @@ Turn debug off with `analytics.debug(false)`
 
 ### Example Iron Router & Flow Router Apps
 
-This repo includes an `examples` directory containing 2 simple apps using iron router and flow router.
-These apps can be run from their directory with `meteor --settings settings.json`.
+This repo includes an `examples` directory containing 2 simple apps using iron router and flow router. These are just examples with common routers; it does not go to say that this plugin only works with these specific routers. 
+These apps can be run from their directory with `meteor --settings settings.json --production`.
 
 ### License
 

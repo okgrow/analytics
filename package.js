@@ -1,6 +1,6 @@
 Package.describe({
   name: "okgrow:analytics",
-  version: "2.0.0",
+  version: "2.0.1",
   summary: "Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor",
   git: "https://github.com/okgrow/analytics",
   documentation: "README.md",
@@ -27,6 +27,7 @@ Package.onUse(function (api) {
   api.use("iron:router@1.0.7", "client", { weak: true });
   api.use("meteorhacks:flow-router@1.17.2", "client", { weak: true });
   api.use("kadira:flow-router@2.6.0", "client", { weak: true });
+  api.use("kadira:flow-router-ssr@3.13.0", "client", { weak: true });
 
   // Client and server entry points
   api.mainModule("client-main.js", "client");

@@ -30,8 +30,8 @@ Package.onUse(function (api) {
   api.use("kadira:flow-router-ssr@3.13.0", "client", { weak: true });
 
   // Client and server entry points
-  api.mainModule("client-main.js", "client");
-  api.mainModule("server-main.js", "server");
+  api.mainModule("client/main.js", "client");
+  api.mainModule("server/main.js", "server");
 
   // For backward compatibility, pre import/export syntax
   api.export("analytics", ["client", "server"]);

@@ -26,28 +26,24 @@ const logFirstPageLoad = () => {
 };
 
 const configurePageLoadTracking = () => {
-  const fireOnPushState = () => {
+  // Save reference to original pushState.
+  const originalPushState = window.history.pushState;
+
+  // Wrap original pushState to call new logPageLoad() function
+  // NOTE: this can't be an arrow function!
+  window.history.pushState = function okgrowAnalyticsMonkeyPatchedPushState(...args) {
     try {
       logPageLoad({ title: document.title, referrer: location.href });
     } catch (e) {
       console.error(e); // eslint-disable-line no-console
     }
-  };
-
-  // Save reference to original pushState.
-  const originalPushState = window.history.pushState;
-
-  // Wrap original pushState to call new push state function
-  // NOTE: this can't be an arrow function!
-  window.history.pushState = function okgrowAnalyticsMonkeyPatchedPushState(...args) {
-    fireOnPushState();
 
     // Call original pushState with incoming arguments
     return originalPushState.apply(window.history, args);
   };
 
   window.addEventListener('popstate', () => {
-    fireOnPushState();
+    logPageLoad({ title: document.title, referrer: location.href });
   }, false);
 };
 

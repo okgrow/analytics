@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Random } from 'meteor/random';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, Link } from 'react-router';
 import { analytics } from "meteor/okgrow:analytics"
@@ -14,7 +15,7 @@ export default class App extends Component {
       log: [],
       currentIdentity: `${analytics._user._getTraits().email}` || "No Identity Set"
     }
-    
+
     analytics.on("page", (event, properties, options) => {
       const log = this.state.log;
       log.push(`Page: ${options.path}`);
@@ -35,10 +36,10 @@ export default class App extends Component {
       log.push(`Track: ${event}`);
       this.setState({ log })
     });
-    
+
     this.isOauth = this.isOauth.bind(this);
   }
-  
+
   isOauth() {
     const user = Meteor.user();
     let message = "Not Signed In.";
@@ -55,7 +56,7 @@ export default class App extends Component {
     }
     return message;
   }
-  
+
   render() {
     return (
       <div>
@@ -75,7 +76,7 @@ export default class App extends Component {
         <div>
           <h3>OAuth Integration</h3>
           {
-            Meteor.user() 
+            Meteor.user()
               ? (<p>{this.isOauth()}</p>)
               : (<p>Not signed in</p>)
           }
@@ -85,7 +86,7 @@ export default class App extends Component {
           <ul>
             {
               this.state.log.map(l => (
-                <li>{l}</li>
+                <li key={Random.id()}>{l}</li>
               ))
             }
           </ul>
@@ -97,13 +98,13 @@ export default class App extends Component {
 }
 
 Meteor.startup(() => {
-  render( 
+  render(
     <Router history={ browserHistory }>
       <Route path="/" component={ App } />
       <Route path="/one" component={ App } />
       <Route path="/two" component={ App } />
       <Route path="/three" component={ App } />
-    </Router>, 
-    document.getElementById( 'render-target' ) 
+    </Router>,
+    document.getElementById( 'render-target' )
   );
 });

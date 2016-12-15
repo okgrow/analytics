@@ -111,7 +111,7 @@ Check Segment.io's [analytics.js track documentation](https://segment.com/docs/l
 
 Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great way to capture how far a visitor has scrolled down a page.
 
-#### Browser Policy
+### Browser Policy
 
 If your project uses the [Browser Policy package](https://atmospherejs.com/meteor/browser-policy), we've included the Google Analytics & Mixpanel domains in our browser policy configuration. Any additional services you add will need to be added to your browser policy config as well.
 

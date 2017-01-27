@@ -1,0 +1,9 @@
+{
+  "public": {
+    "comment": "These are test API keys, change them to your own for testing but please don't commit the changes",
+    "analyticsSettings": {
+       "Google Analytics": {"trackingId": "UA-58359748-3"},
+       "Mixpanel":         {"token": "b513b13a2e253576934b47d2a195ae29","people": true}
+     }
+   }
+ }

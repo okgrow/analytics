@@ -25,9 +25,6 @@
     "semi": 2,
     "no-console": 1,
     "max-len": 1,
-    "quotes": [
-        2, "double", { "avoidEscape": true, "allowTemplateLiterals": true }
-      ],
     "meteor/eventmap-params": [
         2, { "templateInstanceParamName": "instance" }
       ],

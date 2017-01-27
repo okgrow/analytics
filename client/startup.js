@@ -63,7 +63,9 @@ const configurePageLoadTracking = () => {
 const analyticsStartup = () => {
   // TODO: SETTINGS needs to be factored out...maybe passed in somehow
   if (SETTINGS) {
-    analytics.initialize(SETTINGS);
+    // Pass a new object based on settings in case analytics wants or tries to
+    // modify the settings object being passed.
+    analytics.initialize(Object.assign({}, SETTINGS));
     logFirstPageLoad();
     configurePageLoadTracking();
   } else {

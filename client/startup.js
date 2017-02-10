@@ -66,8 +66,11 @@ const analyticsStartup = () => {
     // Pass a new object based on settings in case analytics wants or tries to
     // modify the settings object being passed.
     analytics.initialize(Object.assign({}, SETTINGS));
-    logFirstPageLoad();
-    configurePageLoadTracking();
+
+    if (SETTINGS.autorun !== false) {
+      logFirstPageLoad();
+      configurePageLoadTracking();
+    }
   } else {
     console.error('Missing analyticsSettings in Meteor.settings.public'); // eslint-disable-line no-console
   }

@@ -2,7 +2,7 @@
   "name": "flow-router",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --settings settings.json"
   },
   "dependencies": {
     "babel-runtime": "6.18.0",

@@ -1,7 +1,8 @@
-// TODO: Need a non-Meteor way to do this!
-import { Meteor } from "meteor/meteor";
+import { Meteor } from 'meteor/meteor'; // eslint-disable-line import/no-extraneous-dependencies, import/extensions
 
-const SETTINGS = Meteor.settings && Meteor.settings.public &&
-                 Meteor.settings.public.analyticsSettings || false;
+const SETTINGS = (Meteor.settings
+                  && Meteor.settings.public
+                  && Meteor.settings.public.analyticsSettings)
+                 || false;
 
-export { SETTINGS };
+export { SETTINGS }; // eslint-disable-line import/prefer-default-export

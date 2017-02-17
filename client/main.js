@@ -1,9 +1,9 @@
 // Entry point
-import "./startup";
+import './startup';
 
 // Make analytics available as an export
-import analytics from "../vendor/analytics.min";
+import analytics from '../vendor/analytics.min';
 
-import { trackEventWhenReady, trackPageWhenReady, identifyWhenReady } from "./helpers";
+import { trackEventWhenReady, trackPageWhenReady, identifyWhenReady } from './helpers';
 
 export { analytics, trackEventWhenReady, trackPageWhenReady, identifyWhenReady };

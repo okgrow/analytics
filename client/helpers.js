@@ -1,4 +1,4 @@
-import analytics from "../vendor/analytics.min.js";
+import analytics from '../vendor/analytics.min';
 
 /*
 * analytics.js might not have loaded it's integrations by the time we start

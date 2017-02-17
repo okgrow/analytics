@@ -1,6 +1,6 @@
-import { Meteor } from "meteor/meteor";
-import { AnalyticsUsers } from "./collections";
-import { trackEventWhenReady, identifyWhenReady } from "./helpers";
+import { Meteor } from 'meteor/meteor'; // eslint-disable-line import/no-extraneous-dependencies, import/extensions
+import { AnalyticsUsers } from './collections';
+import { trackEventWhenReady, identifyWhenReady } from './helpers';
 
 /*
 * getUserEmail()
@@ -12,9 +12,9 @@ const getUserEmail = function getUserEmail() {
     const user = AnalyticsUsers.findOne({ _id: Meteor.userId() }, {
       fields: {
         emails: 1,
-        "services.facebook.email": 1,
-        "services.google.email": 1,
-        "services.github.email": 1,
+        'services.facebook.email': 1,
+        'services.google.email': 1,
+        'services.github.email': 1,
       },
     });
     // TODO: Clean up/refactor code style.
@@ -53,9 +53,9 @@ const trackLogins = function trackLogins() {
       // TODO I think it's not guaranteed that userEmail has been set because
       // the 'AnalyticsUsers' publication might not be ready yet.
       identifyWhenReady(Meteor.userId(), { email: getUserEmail() });
-      trackEventWhenReady("Signed in");
+      trackEventWhenReady('Signed in');
     } else {
-      trackEventWhenReady("Signed out");
+      trackEventWhenReady('Signed out');
     }
   }
   initialized = true;

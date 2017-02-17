@@ -1,5 +1,5 @@
-import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker';
+import { Meteor } from 'meteor/meteor'; // eslint-disable-line import/no-extraneous-dependencies, import/extensions
+import { Tracker } from 'meteor/tracker'; // eslint-disable-line import/no-extraneous-dependencies, import/extensions
 import { SETTINGS } from './constants';
 import { trackLogins, getUserEmail } from './meteor-analytics';
 import { trackPageWhenReady } from './helpers';

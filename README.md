@@ -1,6 +1,9 @@
 # Complete analytics integration for Meteor
 Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to record and send your data from your Meteor app to your analytics platforms.
 
+## Analytics 2.0.0+
+Our Analytics package has been rewritten to be router agnostic. You should be able to use this package with any router that you use with Meteor app. We have tested and used our Analytics package with iron-router, flow-router, and react-router. You can view and test this out in our iron-router, flow-router and react-router example apps located in the `examples` folder.
+
 ### Pre Meteor 1.3.1
 For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1
 
@@ -23,9 +26,9 @@ For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow
 
 ## Ad-blocker
 
-Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. 
+Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name.
 
-Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together and minified. To work around this issue you can disable your ad-blocker whilst developing. 
+Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together and minified. To work around this issue you can disable your ad-blocker whilst developing.
 
 To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
 
@@ -132,10 +135,10 @@ In the console:
 
 Turn debug off with `analytics.debug(false)`
 
-### Example Iron Router & Flow Router Apps
+### Example Iron Router, Flow Router, and React Router
 
-This repo includes an `examples` directory containing 2 simple apps using iron router and flow router. These are just examples with common routers; it does not go to say that this plugin only works with these specific routers. 
-These apps can be run from their directory with `meteor --settings settings.json --production`.
+This repo includes an `examples` directory containing 3 simple apps using iron router, flow router and react router. These are just examples with common routers; it does not go to say that this plugin only works with these specific routers.
+These apps must first be setup with `meteor npm install`, you can then run from their directory with `meteor --settings settings.json --production`.
 
 ### License
 

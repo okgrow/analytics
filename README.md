@@ -1,8 +1,10 @@
 # Complete analytics integration for Meteor
 Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to record and send your data from your Meteor app to your analytics platforms.
 
-## Analytics 2.0.0+
+## Analytics 2.1.0+
 Our Analytics package has been rewritten to be router agnostic. You should be able to use this package with any router that you use with Meteor app. We have tested and used our Analytics package with iron-router, flow-router, and react-router. You can view and test this out in our iron-router, flow-router and react-router example apps located in the `examples` folder.
+
+**NOTE**: A fundamental change that may affect some applications is that we no longer look for or use the router's route name when logging page views. Instead we use `document.title`. This may affect applications that do not change or set their `document.title` for each screen or page of their application. The simplest solution is to simply set document title like this `document.title = "My new title";` for each screen or page in your application. If you are using `flow router` or `iron router` you can remain at `okgrow:analytics@2.0.1` to keep using the `name` of the route for your analytic events.
 
 ### Pre Meteor 1.3.1
 For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1

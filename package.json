@@ -1,6 +1,6 @@
 {
   "name": "analytics",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Complete automatic pageview tracking with Google Analytics, Mixpanel, KISSmetrics (and more) integration for JavaScript applications.",
   "repository": {
     "type": "git",

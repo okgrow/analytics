@@ -3,8 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, Link } from 'react-router';
-import { analytics } from "meteor/okgrow:analytics"
-import { LoginButtons } from 'meteor/okgrow:accounts-ui-react';;
+import { analytics } from "meteor/okgrow:analytics";
+import { LoginButtons } from 'meteor/okgrow:accounts-ui-react';
 
 import './main.html';
 

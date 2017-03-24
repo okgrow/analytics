@@ -20,15 +20,6 @@ Package.onUse(function (api) {
   api.use('accounts-base', ['client', 'server'], { weak: true });
   api.use('browser-policy-content', 'server', { weak: true });
 
-  // constrain their versions IF another package, or app brings them in.
-  // Below packages will cause constraint conflicts in Meteor Apps < 1.3.1
-  // Please use v1.0.9 https://github.com/okgrow/analytics/releases/tag/v1.0.9
-  // for Meteor Apps < 1.3.1
-  api.use('iron:router@1.0.7', 'client', { weak: true });
-  api.use('meteorhacks:flow-router@1.17.2', 'client', { weak: true });
-  api.use('kadira:flow-router@2.6.0', 'client', { weak: true });
-  api.use('kadira:flow-router-ssr@3.13.0', 'client', { weak: true });
-
   // Client and server entry points
   api.mainModule('client/main.js', 'client');
   api.mainModule('server/main.js', 'server');
@@ -38,5 +29,5 @@ Package.onUse(function (api) {
 });
 
 Npm.depends({
-  'okgrow-analytics': '1.0.0',
+  '@okgrow/auto-analytics': '1.0.1',
 });

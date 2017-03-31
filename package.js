@@ -6,7 +6,7 @@ Package.describe({
   documentation: 'README.md',
 });
 
-Package.onUse(function (api) {
+Package.onUse((api) => {
   // NOTE: symlink with example app causes error, upgrade to 1.3.2 or higher
   // to run the examples. https://github.com/meteor/meteor/issues/6665
   api.versionsFrom('1.3.1');

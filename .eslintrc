@@ -20,6 +20,7 @@
     }
   },
   "rules": {
+    quotes: ["error", "single", { "allowTemplateLiterals": true }],
     "no-undef": 0,
     "no-underscore-dangle": 0,
     "semi": 2,

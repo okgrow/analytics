@@ -3,6 +3,11 @@ OK GROW! analytics uses a combination of the browser [History API](https://devel
 
 In version 3.X of _this_ package, the automatic page view tracking is handled by our new _router-agnostic_ [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) NPM package, which can be used by _any_ JavaScript application whether using Meteor or not. _This_ package adds automatic user identification by using hooks in the Meteor accounts package and building on Segment.io's `analytics` package _through_ the `@okgrow/auto-analytics` package.
 
+## Analytics 2.1.0+
+Our Analytics package has been rewritten to be router agnostic. You should be able to use this package with any router that you use with Meteor app. We have tested and used our Analytics package with iron-router, flow-router, and react-router. You can view and test this out in our iron-router, flow-router and react-router example apps located in the `examples` folder.
+
+**NOTE**: A fundamental change that may affect some applications is that we no longer look for or use the router's route name when logging page views. Instead we use `document.title`. This may affect applications that do not change or set their `document.title` for each screen or page of their application. The simplest solution is to simply set document title like this `document.title = "My new title";` for each screen or page in your application. If you are using `flow router` or `iron router` you can remain at `okgrow:analytics@2.0.1` to keep using the `name` of the route for your analytic events.
+
 ### Pre Meteor 1.3.1
 For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1
 
@@ -14,7 +19,6 @@ For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow
 
 ## Currently Supported Analytic Services
 See the [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) package for up-to-date details of supported analytics services.
-
 
 ## Ad-blocker
 When running your Meteor app in "development mode" ad-blocking web-browser extensions may block the `okgrow:analytics` package due to the word "analytics" in the package name. This only occurs when running Meteor in "development mode" because files are not bundled together and minified. To work around this issue you can disable your ad-blocker when running in development mode.

@@ -65,7 +65,8 @@ Since the History API is used to automatically track page views, `document.title
 If you rely on your router's route name for the page name in page view events, you can easily set `document.title` programming using the router's route name. Here are examples of how to do this with React Router, Flow Router and Iron Router:
 
 #### React Router
-In your router setup:
+
+In your router setup, add a name property to your routes:
 ```
 <Router history={ browserHistory }>
   <Route path="/" name="Home" component={ App } />
@@ -74,16 +75,19 @@ In your router setup:
   <Route path="/three" name="Three" component={ App } />
 </Router>
 ```
-In your `render()` function:
+**NOTE** The current route is passed in as a property named `route` to your component.
+
+Then, in the `render()` function of your main layout component, using a package like [`react-document-title`](https://github.com/gaearon/react-document-title):
 ```
 render() {
-  document.title = this.props.route.name;
-  ...
+  return (
+    <DocumentTitle title={this.props.route.name}>
+      ...
+    </DocumentTitle>
+  );
 }
 ```
-**NOTE** This is only _one_ example approach, and probably not  the most ideal one, for React applications. A lot depends on how you have your React app structured.
 
-Consider using a package like [`react-document-title`](https://github.com/gaearon/react-document-title)
 
 #### Flow Router
 ```

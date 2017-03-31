@@ -58,6 +58,8 @@ export default class App extends Component {
   }
 
   render() {
+    document.title = this.props.route.name;
+
     return (
       <div>
         <LoginButtons />
@@ -100,10 +102,10 @@ export default class App extends Component {
 Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
-      <Route path="/" component={ App } />
-      <Route path="/one" component={ App } />
-      <Route path="/two" component={ App } />
-      <Route path="/three" component={ App } />
+      <Route path="/" name="Home" component={ App } />
+      <Route path="/one" name="One" component={ App } />
+      <Route path="/two" name="Two" component={ App } />
+      <Route path="/three" name="Three" component={ App } />
     </Router>,
     document.getElementById( 'render-target' )
   );

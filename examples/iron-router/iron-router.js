@@ -80,6 +80,12 @@ if (Meteor.isClient) {
       return message;
     },
   });
+
+  Template.mainLayout.onRendered(function mainLayoytOnRendered() {
+    Tracker.autorun(() => {
+      document.title = Router.current().route.getName();
+    });
+  });
 }
 
 if (Meteor.isServer) {

@@ -60,6 +60,12 @@ if (Meteor.isClient) {
     });
   });
 
+  Template.mainLayout.onRendered(function mainLayoytOnRendered() {
+    Tracker.autorun(() => {
+      document.title = FlowRouter.getRouteName();
+    });
+  });
+
   Template.mainLayout.helpers({
     log() { return Template.instance().log.get(); },
     currentIdentity() { return Template.instance().currentIdentity.get(); },

@@ -1,41 +1,33 @@
-# Complete analytics integration for Meteor
-Use one API thanks to Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to record and send your data from your Meteor app to your analytics platforms.
+# Complete automated analytics integration for Meteor
+OK GROW! analytics uses a combination of the browser [History API](https://developer.mozilla.org/en-US/docs/Web/API/History), Meteor's [accounts](https://guide.meteor.com/accounts.html) package and Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to automatically record and send user identity and page view event data from your Meteor app to your analytics platforms.
+
+In version 3.X of _this_ package, the automatic page view tracking is handled by our new _router-agnostic_ [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) NPM package, which can be used by _any_ JavaScript application whether using Meteor or not. _This_ package adds automatic user identification by using hooks in the Meteor accounts package and building on Segment.io's `analytics` package _through_ the `@okgrow/auto-analytics` package.
 
 ### Pre Meteor 1.3.1
 For Meteor Apps older than v1.3.1, please use [v1.0.9](https://github.com/okgrow/analytics/releases/tag/v1.0.9) of this package. Going forward this package will officially only be supporting Meteor Apps >= v1.3.1
+
 
 ## Installation
 
 `> meteor add okgrow:analytics`
 
+
 ## Currently Supported Analytic Services
-* Amplitude
-* Chartbeat
-* comScore
-* Google Analytics
-* HubSpot
-* Intercom
-* Keen IO
-* KISSmetrics
-* Mixpanel
-* Quantcast
-* Segment.io
+See the [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) package for up-to-date details of supported analytics services.
+
 
 ## Ad-blocker
+When running your Meteor app in "development mode" ad-blocking web-browser extensions may block the `okgrow:analytics` package due to the word "analytics" in the package name. This only occurs when running Meteor in "development mode" because files are not bundled together and minified. To work around this issue you can disable your ad-blocker when running in development mode.
 
-Whilst running your Meteor App in "development mode" any ad-blocking web-browser extensions may block the entire "okgrow:analytics" package. This occurs due to the word "analytics" being used in the package name. 
-
-Please note this only occurs when running Meteor in "development mode" due to the files not being bundled together and minified. To work around this issue you can disable your ad-blocker whilst developing. 
-
-To test that your application runs whilst an ad-blocker is enabled you can run your Meteor app with the following command:
+To test that application with an ad-blocker, run your Meteor app in production mode with this command:
 
 `meteor run --production --settings settings.json`
 
-**NOTE:** If an Adblocker is enabled the expected behaviour is that your analytic events will not be received. You will see an error message in your console reporting the events being blocked.
+**NOTE** If an ad-blocker is enabled the expected behavior is that analytic events will not be received. You'll see an error message in your console reporting the events being blocked.
+
 
 ## Configuration
-
-Add various platforms by adding each tool's configuration to your `settings.json` file:
+This package will automatically configure the underlying `@okgrow/auto-analytics` package using `Meteor.settings.public.analyticsSettings`. In Meteor you typically specify your settings using a `settings.json` file:
 
 ```
 {
@@ -58,24 +50,60 @@ Add various platforms by adding each tool's configuration to your `settings.json
 }
 ```
 
-It's important to note that service names and API key-names provided above are specific to the platform. Make sure to use the correct service name and key shown for the platform you're adding.
+And run your app with that settings file as follows:
 
-There are other options which we haven't documented here yet, to see them search for your specific integration [in this file](https://github.com/okgrow/analytics.js/blob/master/analytics.js) and look at the options and their defaults that are set with `.option(...)`.
+`meteor --settings settings.json`
 
-If you use a different service for tracking events or page views and you think it's popular enough that we should add it then please open an issue on the repo and we'll see how many supporters we get. Each additional integration adds a small amount to the file size so we would like to support only the most common ones.
+See the [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) package for more details on configuration.
+
 
 ### Page views
+See the [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) package for details on page view tracking. In short, that package uses the browser [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) to automatically track page views.
 
-Compatible with any router,
-this package will log page views automatically. The page is
-logged with the follow parameters:
+Since the History API is used to automatically track page views, `document.title` is used instead of the router's route name as the default page name.
 
- * `path`: path part of the URL
- * `title`: the page's title
- * `url`: hostname + path
- * `search`: the URL's query string, if provided. blank otherwise
- * `referrer`: hostname + old path, if coming from a previous route
+If you rely on your router's route name for the page name in page view events, you can easily set `document.title` programming using the router's route name. Here are examples of how to do this with React Router, Flow Router and Iron Router:
 
+#### React Router
+In your router setup:
+```
+<Router history={ browserHistory }>
+  <Route path="/" name="Home" component={ App } />
+  <Route path="/one" name="One" component={ App } />
+  <Route path="/two" name="Two" component={ App } />
+  <Route path="/three" name="Three" component={ App } />
+</Router>
+```
+In your `render()` function:
+```
+render() {
+  document.title = this.props.route.name;
+  ...
+}
+```
+**NOTE** This is only _one_ example approach, and probably not  the most ideal one, for React applications. A lot depends on how you have your React app structured.
+
+Consider using a package like [`react-document-title`](https://github.com/gaearon/react-document-title)
+
+#### Flow Router
+```
+Template.mainLayout.onRendered(function() {
+  Tracker.autorun(() => {
+    document.title = FlowRouter.getRouteName();
+  });
+});
+```
+
+#### Iron Router
+```
+Template.mainLayout.onRendered(function() {
+  Tracker.autorun(() => {
+    document.title = Router.current().route.getName();
+  });
+});
+```
+
+#### Disabling automatic page views
 To disable automatic page view tracking change `Meteor.settings` as shown below then manually log a page view by calling `analytics.page('page name')`:
 
 ```
@@ -89,14 +117,13 @@ To disable automatic page view tracking change `Meteor.settings` as shown below 
 }
 ```
 
-### Log signin/signout
 
+### Log signin/signout
 If you have the `accounts` package installed, this package will automatically track when a user logs in and logs out. Logging in will call `identify` on the user and associate their `Meteor.userId` to their previous anonymous activities.
 
+
 ### Event tracking
-
-Add tracking on any event simply by calling the `analytics.track()` function:
-
+See the [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) package for details on event tracking. In short, track any event by calling the `analytics.track()` function:
 ```
 analytics.track("Bought Ticket", {
   eventName: "Wine Tasting",
@@ -104,43 +131,43 @@ analytics.track("Bought Ticket", {
 });
 ```
 
-Check Segment.io's [analytics.js track documentation](https://segment.com/docs/libraries/analytics.js/#track) for a full description of `track()` and all the other functions available in this package.
 
 ### Track visitor scrolling
-
 Josh Owens' article, [Google Analytics events, goals, and Meteor.js](http://joshowens.me/google-analytics-events-goals-and-meteor-js/), goes over a great way to capture how far a visitor has scrolled down a page.
 
+
 ### Browser Policy
+If your project uses the [Browser Policy package](https://atmospherejs.com/meteor/browser-policy), we've included the Google Analytics and Mixpanel domains in our browser policy configuration. Any additional services you add will need to be added to your browser policy config as well.
 
-If your project uses the [Browser Policy package](https://atmospherejs.com/meteor/browser-policy), we've included the Google Analytics & Mixpanel domains in our browser policy configuration. Any additional services you add will need to be added to your browser policy config as well.
 
-###### example
+#### Example browser policy
 ```
-// file: lib/browser-policy.js
-
 BrowserPolicy.content.allowOriginForAll("www.google-analytics.com");
 BrowserPolicy.content.allowOriginForAll("cdn.mxpnl.com");
 ```
 
-If your project doesn't use this package, then don't worry as it will not affect your usage.
+If your project doesn't use the Browser Policy package, don't worry, it won't affect your usage.
+
 
 ### Debugging
+To log package activity to the console for debugging purposes, turn on debugging in the console:
 
-When adding your platforms and setting events to track, you'll probably want to keep debug on locally. This will log all the analytics package's activity to the console.
-In the console:
 `> analytics.debug()`
 
-Turn debug off with `analytics.debug(false)`
+Turn debug logging off with:
 
-### Example Iron Router & Flow Router Apps
+`> analytics.debug(false)`
 
-This repo includes an `examples` directory containing 2 simple apps using iron router and flow router. These are just examples with common routers; it does not go to say that this plugin only works with these specific routers. 
-These apps can be run from their directory with `meteor --settings settings.json --production`.
+
+### Example React, Flow and Iron Router Apps
+While page view event tracking is router agnostic, the `examples` directory contains example apps using the three most common routers used in Meteor apps: [React Router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router), [Flow Router](https://github.com/kadirahq/flow-router) and [Iron Router](https://github.com/iron-meteor/iron-router). These apps can be run from within their respective directories with:
+
+`meteor npm start`
+
 
 ### License
-
 Released under the [MIT license](https://github.com/okgrow/analytics/blob/master/License.md).
 
-### Contributing
 
+### Contributing
 Issues and Pull Requests are always welcome. Please read our [contribution guidelines](https://github.com/okgrow/guides/blob/master/contributing.md).

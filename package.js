@@ -1,7 +1,7 @@
 Package.describe({
   name: 'okgrow:analytics',
   version: '3.0.0',
-  summary: 'Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor',
+  summary: 'Extends @okgrow/auto-analytics npm package to add automatic user identification for Meteor applications.',
   git: 'https://github.com/okgrow/analytics',
   documentation: 'README.md',
 });

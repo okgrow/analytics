@@ -137,6 +137,23 @@ In the console:
 
 Turn debug off with `analytics.debug(false)`
 
+### URL Whitelisting on Android Devices
+
+If your app is running on Android devices you will probably have to add the `cordova-plugin-whitelist` package and set access rules in your `mobile-config.js` for all URLs of the platforms that you are using.
+
+Example for Intercom:
+```
+App.accessRule('https://js.intercomcdn.com/*');
+App.accessRule('https://static.intercomcdn.com/*');
+App.accessRule('https://api-iam.intercom.io/*');
+App.accessRule('https://widget.intercom.io/*');
+App.accessRule('https://nexus-websocket-a.intercom.io/*');
+App.accessRule('https://nexus-websocket-b.intercom.io/*');
+```
+
+To find all the necessary URLs for your project, build your production app and install it on your Android device. Then connect it via USB and open the Android Studio Device Monitor (Tools >> Android Device Monitor >> LogCat). Perform a relevant action and then search for "whitelist". It should a show message for each URL that was blocked.
+
+
 ### Example Iron Router, Flow Router, and React Router
 
 This repo includes an `examples` directory containing 3 simple apps using iron router, flow router and react router. These are just examples with common routers; it does not go to say that this plugin only works with these specific routers.

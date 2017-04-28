@@ -167,6 +167,23 @@ Turn debug logging off with:
 `> analytics.debug(false)`
 
 
+### URL Whitelisting on Android Devices
+
+If your app is running on Android devices you will probably have to add the `cordova-plugin-whitelist` package and set access rules in your `mobile-config.js` for all URLs of the platforms that you are using.
+
+Example for Intercom:
+```
+App.accessRule('https://js.intercomcdn.com/*');
+App.accessRule('https://static.intercomcdn.com/*');
+App.accessRule('https://api-iam.intercom.io/*');
+App.accessRule('https://widget.intercom.io/*');
+App.accessRule('https://nexus-websocket-a.intercom.io/*');
+App.accessRule('https://nexus-websocket-b.intercom.io/*');
+```
+
+To find all the necessary URLs for your project, build your production app and install it on your Android device. Then connect it via USB and open the Android Studio Device Monitor (Tools >> Android Device Monitor >> LogCat). Perform a relevant action and then search for "whitelist". It should a show message for each URL that was blocked.
+
+
 ### Example React, Flow and Iron Router Apps
 While page view event tracking is router agnostic, the `examples` directory contains example apps using the three most common routers used in Meteor apps: [React Router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router), [Flow Router](https://github.com/kadirahq/flow-router) and [Iron Router](https://github.com/iron-meteor/iron-router). These apps can be run from within their respective directories with:
 

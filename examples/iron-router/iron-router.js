@@ -81,7 +81,7 @@ if (Meteor.isClient) {
     },
   });
 
-  Template.mainLayout.onRendered(function mainLayoytOnRendered() {
+  Template.mainLayout.onRendered(function mainLayoutOnRendered() {
     Tracker.autorun(() => {
       document.title = Router.current().route.getName();
     });

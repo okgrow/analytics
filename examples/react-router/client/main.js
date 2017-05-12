@@ -3,8 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, Link } from 'react-router';
-import { analytics } from "meteor/okgrow:analytics"
-import { LoginButtons } from 'meteor/okgrow:accounts-ui-react';;
+import { analytics } from "meteor/okgrow:analytics";
+import { LoginButtons } from 'meteor/okgrow:accounts-ui-react';
+import DocumentTitle from 'react-document-title';
 
 import './main.html';
 
@@ -59,40 +60,42 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <LoginButtons />
+      <DocumentTitle title={this.props.route.name}>
+        <div>
+          <LoginButtons />
 
-        <Link to='/one'>One</Link>
-        <Link to='/two'>Two</Link>
-        <Link to='/three'>Three</Link>
-        <div>
-          <h3>Current route</h3>
-          {this.props.route.path}
-        </div>
-        <div>
-          <h3>Current Identity</h3>
-          {this.state.currentIdentity}
-        </div>
-        <div>
-          <h3>OAuth Integration</h3>
-          {
-            Meteor.user()
-              ? (<p>{this.isOauth()}</p>)
-              : (<p>Not signed in</p>)
-          }
-        </div>
-        <div>
-          <h3>Latest Analytics Logged</h3>
-          <ul>
+          <Link to='/one'>One</Link>
+          <Link to='/two'>Two</Link>
+          <Link to='/three'>Three</Link>
+          <div>
+            <h3>Current route</h3>
+            {this.props.route.path}
+          </div>
+          <div>
+            <h3>Current Identity</h3>
+            {this.state.currentIdentity}
+          </div>
+          <div>
+            <h3>OAuth Integration</h3>
             {
-              this.state.log.map(l => (
-                <li key={Random.id()}>{l}</li>
-              ))
+              Meteor.user()
+                ? (<p>{this.isOauth()}</p>)
+                : (<p>Not signed in</p>)
             }
-          </ul>
+          </div>
+          <div>
+            <h3>Latest Analytics Logged</h3>
+            <ul>
+              {
+                this.state.log.map(l => (
+                  <li key={Random.id()}>{l}</li>
+                ))
+              }
+            </ul>
+          </div>
+          <p>Want to see more detail? Call <code style={{backgroundColor: 'blueviolet', padding: 4, color: 'white'}}>analytics.debug()</code> in the browser console and refresh.</p>
         </div>
-        <p>Want to see more detail? Call <code style={{backgroundColor: 'blueviolet', padding: 4, color: 'white'}}>analytics.debug()</code> in the browser console and refresh.</p>
-      </div>
+      </DocumentTitle>
     );
   }
 }
@@ -100,10 +103,10 @@ export default class App extends Component {
 Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
-      <Route path="/" component={ App } />
-      <Route path="/one" component={ App } />
-      <Route path="/two" component={ App } />
-      <Route path="/three" component={ App } />
+      <Route path="/" name="Home" component={ App } />
+      <Route path="/one" name="One" component={ App } />
+      <Route path="/two" name="Two" component={ App } />
+      <Route path="/three" name="Three" component={ App } />
     </Router>,
     document.getElementById( 'render-target' )
   );

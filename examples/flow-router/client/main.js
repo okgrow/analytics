@@ -1,1 +1,1 @@
-import "../imports/flow-router.js";
+import '../imports/flow-router';

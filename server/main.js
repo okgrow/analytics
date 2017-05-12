@@ -1,2 +1,2 @@
-import "./browser-policy";
-import "./publications";
+import './browser-policy';
+import './publications';

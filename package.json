@@ -1,6 +1,6 @@
 {
   "name": "analytics",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Extends @okgrow/auto-analytics npm package to add automatic user identification for Meteor applications.",
   "repository": {
     "type": "git",
@@ -26,7 +26,6 @@
     "eslint-plugin-meteor": "^4.0.1"
   },
   "dependencies": {
-    "babel-runtime": "6.x.x",
-    "@okgrow/auto-analytics": "1.0.1"
+    "@okgrow/auto-analytics": "1.0.2"
   }
 }

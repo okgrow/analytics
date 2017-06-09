@@ -6,6 +6,6 @@ es5-shim@4.6.15
 meteor@1.6.1
 modules@0.8.2
 modules-runtime@0.7.10
-okgrow:analytics@3.0.0
+okgrow:analytics@3.0.1
 promise@0.8.8
 underscore@1.0.10

@@ -75,7 +75,7 @@ npm-mongo@2.2.24
 oauth@1.1.13
 oauth2@1.1.11
 observe-sequence@1.0.16
-okgrow:analytics@3.0.1
+okgrow:analytics@4.0.0
 ordered-dict@1.0.9
 promise@0.8.8
 random@1.0.10

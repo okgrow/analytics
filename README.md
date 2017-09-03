@@ -14,9 +14,10 @@ OK GROW! analytics uses a combination of the browser [History API](https://devel
 - [Usage](#usage)
 	- [Currently Supported Analytic Services](#currently-supported-analytic-services)
 	- [Page views](#page-views)
-	- [React Router](#react-router)
-	- [Flow Router](#flow-router)
-	- [Iron Router](#iron-router)
+	- [Routers](#routers)
+		- [React Router](#react-router)
+		- [Flow Router](#flow-router)
+		- [Iron Router](#iron-router)
 	- [Disabling automatic page views](#disabling-automatic-page-views)
 	- [Log signin/signout](#log-signinsignout)
 	- [Event tracking](#event-tracking)
@@ -97,7 +98,11 @@ Since the History API is used to automatically track page views, `document.title
 
 If you rely on your router's route name for the page name in page view events, you can easily set `document.title` programming using the router's route name. Here are examples of how to do this with React Router, Flow Router and Iron Router:
 
-### React Router
+### Routers
+
+This package is router agnostic. It will work with any router, and by default it uses the `document.title` as the page name for reporting to your analytics service.
+
+#### React Router
 
 In your router setup, add a name property to your routes:
 
@@ -123,7 +128,7 @@ render() {
 }
 ```
 
-### Flow Router
+#### Flow Router
 
 ```js
 Template.mainLayout.onRendered(function() {
@@ -133,7 +138,7 @@ Template.mainLayout.onRendered(function() {
 });
 ```
 
-### Iron Router
+#### Iron Router
 
 ```js
 Template.mainLayout.onRendered(function() {

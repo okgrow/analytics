@@ -29,6 +29,6 @@
     "eslint-plugin-meteor": "^4.0.1"
   },
   "dependencies": {
-    "@okgrow/auto-analytics": "2.0.0"
+    "@okgrow/auto-analytics": "^2.0.0"
   }
 }

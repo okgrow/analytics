@@ -1,6 +1,6 @@
 {
   "name": "analytics",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor",
   "repository": {
     "type": "git",
@@ -29,6 +29,6 @@
     "eslint-plugin-meteor": "^4.0.1"
   },
   "dependencies": {
-    "@okgrow/auto-analytics": "1.0.2"
+    "@okgrow/auto-analytics": "1.0.3"
   }
 }

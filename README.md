@@ -247,6 +247,10 @@ This is an open source package. We hope to deal with contributions in a timely m
 
 Feel free to ping if there are open issues or pull requests which are taking a while to be dealt with!
 
+## Additional Notes
+
+There has been at least one report of Google Analytics taking over a day in between GA account creation and any data showing up on the actual GA dashboard. See [this issue](https://github.com/okgrow/analytics/issues/192#issuecomment-333674998) for details. You may just need to wait if nothing's showing up.
+
 ## Contributing
 
 Issues and Pull Requests are always welcome.

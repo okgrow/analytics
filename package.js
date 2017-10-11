@@ -1,6 +1,6 @@
 Package.describe({
   name: 'okgrow:analytics',
-  version: '3.0.2',
+  version: '3.0.3',
   summary: 'Extends @okgrow/auto-analytics adding automatic user identification for Meteor applications.',
   git: 'https://github.com/okgrow/analytics',
   documentation: 'README.md',

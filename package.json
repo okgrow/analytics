@@ -1,6 +1,6 @@
 {
   "name": "analytics",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor",
   "repository": {
     "type": "git",

@@ -60,7 +60,7 @@ npm-bcrypt@0.9.3
 npm-mongo@2.2.33
 observe-sequence@1.0.16
 okgrow:accounts-ui-react@0.8.0
-okgrow:analytics@3.0.3
+okgrow:analytics@3.0.4
 ordered-dict@1.0.9
 promise@0.9.0
 random@1.0.10

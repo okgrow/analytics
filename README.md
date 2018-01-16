@@ -7,9 +7,10 @@ OK GROW! analytics uses a combination of the browser [History API](https://devel
 ## Table of Contents
 
 - [Background](#background)
-	- [Analytics 3.0+](#analytics-30)
-	- [Analytics 2.1.0+](#analytics-210)
-	- [Pre Meteor 1.3.1](#pre-meteor-131)
+  - [Analytics 4.0+](#analytics-40)
+  - [Analytics 3.0+](#analytics-30)
+  - [Analytics 2.1.0+](#analytics-210)
+  - [Pre Meteor 1.3.1](#pre-meteor-131)
 - [Install](#install)
 - [Usage](#usage)
 	- [Currently Supported Analytic Services](#currently-supported-analytic-services)
@@ -37,7 +38,6 @@ OK GROW! analytics uses a combination of the browser [History API](https://devel
 In version 4.X of _this_ package, we are now dependent on version 2.0.0 of our [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) NPM package. **That package no longer embeds the Segment `analytics.js`.** You must now install [Segment's `analytics.js`](https://www.npmjs.com/package/analytics.js) manually (`npm install --save analytics.js`) or create your own custom `analytics.js` module with only the integrations you need.
 
 ### Analytics 3.0+
-
 In version 3.X of _this_ package, the automatic page view tracking is handled by our new _router-agnostic_ [`@okgrow/auto-analytics`](https://www.npmjs.com/package/@okgrow/auto-analytics) NPM package, which can be used by _any_ JavaScript application whether using Meteor or not. _This_ package adds automatic user identification by using hooks in the Meteor accounts package and building on Segment.io's `analytics` package _through_ the `@okgrow/auto-analytics` package.
 
 ### Analytics 2.1.0+

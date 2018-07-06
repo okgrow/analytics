@@ -255,11 +255,11 @@ There has been at least one report of Google Analytics taking over a day in betw
 
 Issues and Pull Requests are always welcome.
 
-Please read our [contribution guidelines](https://github.com/okgrow/guides/blob/master/open-source/contributing.md).
+Please read our [contribution guidelines](https://github.com/okgrow/guides/blob/master/docs/OpenSource-Contributing.md).
 
 If you are interested in becoming a maintainer, get in touch with us by sending an email or opening an issue. You should already have code merged into the project. Active contributors are encouraged to get in touch.
 
-Please note that all interactions in @okgrow's repos should follow our [Code of Conduct](https://github.com/okgrow/guides/blob/master/open-source/CODE_OF_CONDUCT.md).
+Please note that all interactions in @okgrow's repos should follow our [Code of Conduct](https://github.com/okgrow/guides/blob/master/docs/OpenSource-CodeOfConduct.md).
 
 ## License
 Released under the [MIT license](https://github.com/okgrow/analytics/blob/master/License.md) © 2015-2017 OK GROW!.

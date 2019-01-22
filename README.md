@@ -2,6 +2,8 @@
 
 > Complete Google Analytics, Mixpanel, KISSmetrics (and more) integration for Meteor
 
+**Note:** This pkg is no longer being actively maintained, if you'd like to maintain this pkg please express interest by opening an issue.
+
 OK GROW! analytics uses a combination of the browser [History API](https://developer.mozilla.org/en-US/docs/Web/API/History), Meteor's [accounts](https://guide.meteor.com/accounts.html) package and Segment.io's [analytics.js](https://segment.com/docs/libraries/analytics.js/) to automatically record and send user identity and page view event data from your Meteor app to your analytics platforms.
 
 ## Table of Contents
